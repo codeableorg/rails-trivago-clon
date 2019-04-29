@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_204256) do
+ActiveRecord::Schema.define(version: 2019_04_29_210836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "paid_price"
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_bookings_on_room_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "hotels", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "city"
+    t.string "country"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "discount_type"
+    t.integer "discount_amount"
+    t.string "promotionable_type"
+    t.bigint "promotionable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promotionable_type", "promotionable_id"], name: "index_promotions_on_promotionable_type_and_promotionable_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "amount_of_beds"
+    t.integer "price"
+    t.bigint "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +67,13 @@ ActiveRecord::Schema.define(version: 2019_04_29_204256) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "rooms"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "rooms", "hotels"
 end
