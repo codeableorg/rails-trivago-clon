@@ -1,0 +1,4 @@
+rails g model Hotel name email city country adress
+rails g model Room name amount_of_beds:integer price:integer hotel:references  
+rails g model Booking start_date:date end_date:date paid_price:integer user:references room:references
+rails g model Promotion start_date:date end_date:date discount_type discount_amount:integer promotionable:references{polymorphic}:index
