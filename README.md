@@ -8,8 +8,8 @@ The app should have a public website without a namespace.
 - List of hotels with their promotions if they have
 - Search available rooms in a range of dates by price (min and max) and amount of beds
 - Book a room for a range of dates if it's not reserved between those dates
-  - Send a confirmation email to the user after a new booking is created
-  - Send an email to the hotel email
+- Send a confirmation email to the user after a new booking is created
+- Send an email to the hotel email
 - List user bookings in a table
 - (optional) User should be able to cancel a booking from their list of bookings
 - Send an email the previous day of the booking to the user
@@ -24,7 +24,7 @@ The app should have an administration panel in the namespace `/admin`.
 - Register a new hotel
 - Add a room to an hotel
 - Deregister a hotel, and remove related rooms
-  - Notify clients with bookings about the delete
+- Notify clients with bookings about the delete
 - Metrics about most popular and less popular hotels (option to delete less popular with a single click)
 - Create promotion for a hotel or room and apply a percentage or fixed amount of discount
 
