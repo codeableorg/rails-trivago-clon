@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
+  has_many :bookings
 
   def self.from_omniauth(auth)
     user = where(email: auth.info.email.downcase).first_or_create do |user|
