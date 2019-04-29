@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class Admin::RoomsController < ApplicationController
   def index
   end
 

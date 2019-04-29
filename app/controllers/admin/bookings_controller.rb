@@ -1,4 +1,4 @@
-class HotelsController < ApplicationController
+class Admin::BookingsController < ApplicationController
   def index
   end
 
