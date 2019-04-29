@@ -15,10 +15,11 @@
 
     <div>
       <% if current_user %>
-        Has iniciado sesión como <strong><%= current_user.nombre %></strong>!
+        Has iniciado sesión como <strong><%= current_user.email %></strong>!
         <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Iniciar sesión', new_user_session_path %>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
       <% end %>
     </div>
     <%= yield %>
