@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :rooms
     resources :bookings
   end
+
   resources :hotels do
     member do
       get 'rooms'
