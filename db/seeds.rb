@@ -75,4 +75,3 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 # promotion2.room << room3
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
-
