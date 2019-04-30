@@ -1,2 +1,9 @@
 <h1>Hotels#show</h1>
 <p>Find me in app/views/hotels/show.html.erb</p>
+<h2><%= @hotel.name %></h2>
+<p>Email: <%= @hotel.email %></p>
+<p>City: <%= @hotel.city %></p>
+<p>Country: <%= @hotel.country %></p>
+<p>Address: <%= @hotel.address %></p>
+
+<%= link_to "Go back to the list of Hotels", admin_hotels_path %>

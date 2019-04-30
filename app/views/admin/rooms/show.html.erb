@@ -1,2 +1,8 @@
 <h1>Rooms#show</h1>
 <p>Find me in app/views/rooms/show.html.erb</p>
+<h2><%= @room.name %></h2>
+<p>Amount of beds: <%= @room.amount_of_beds %></p>
+<p>Price: <%= @room.price %></p>
+<p>Hotel: <%= @room.hotel.name %></p>
+
+<%= link_to "Go back to the list of Rooms", admin_rooms_path %>
