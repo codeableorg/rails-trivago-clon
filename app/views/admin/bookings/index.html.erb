@@ -1,0 +1,10 @@
+<%= link_to "Create a New Booking", new_admin_booking_path %>
+
+<% @bookings.each do |booking| %>
+  <h2><%= link_to booking.id, admin_hotel_path(booking) %></h2>
+  <p>From: <%= booking.start_date %></p>
+  <p>To: <%= booking.end_date %></p>
+  <p>Price: <%= booking.paid_price %></p>
+  <p>Client: <%= booking.user_id %></p>
+  <p>Number of Room: <%= booking.room_id %></p>
+<% end%>
