@@ -19,7 +19,7 @@ class Admin::BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save 
-      redirect_to admin_bookings_path(booking), notice: 'Booking already created!'
+      redirect_to admin_bookings_path(@booking), notice: 'Booking already created!'
     else
       render :new
     end
