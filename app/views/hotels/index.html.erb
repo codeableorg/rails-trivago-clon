@@ -3,7 +3,8 @@
     <%= text_field_tag(:search, params[:search]) %>
     <%= submit_tag('Search', :name => nil) %>
 <% end %>
-
+<ul>
 <% @hotels.each do |hotel| %>
-  <p><%= hotel.inspect %></p>
+  <li><%= link_to hotel.name, controller: "hotels", action: "show", id: hotel  %></li>
 <% end %>
+</ul>
