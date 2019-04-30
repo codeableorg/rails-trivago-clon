@@ -17,4 +17,15 @@ class HotelsController < ApplicationController
   def edit
   end
 
+  def rooms
+    @hotel = Hotel.find(params[:id])
+    if params[:search].present?
+      @rooms = @hotel.rooms.where(name: params[:search])
+
+      # Course.where('min_age <= :age AND max_age >= :age', age: 18)
+    else
+      @rooms = @hotel.rooms
+    end
+  end
+
 end

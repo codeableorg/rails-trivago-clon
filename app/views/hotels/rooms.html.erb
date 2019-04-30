@@ -1,0 +1,10 @@
+<h1>Rooms</h1>
+
+<%= form_tag(rooms_hotel_path(params[:id]), {:method => 'get'}) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag('Search', :name => nil) %>
+<% end %>
+
+<% @rooms.each do |room| %>  
+  <p><%= room.inspect %></p>
+<% end %>
