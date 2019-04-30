@@ -1,5 +1,5 @@
 module Api
-  class Admin::RoomsController < ApplicationController
+  class RoomsController < ApplicationController
     def index
       render json: Room.all
     end
@@ -15,14 +15,15 @@ module Api
       else
         render json: { status: 'ERROR', 
                       message: 'Room not saved' }, 
-                      status: status: :unprocessable_entity
+                      status: :unprocessable_entity
+      end
     end
 
     def destroy
       room = Room.find(params[:id])
       room.destroy
         render json: { status: 'SUCCESS',
-                      message: 'Room deleted', },
+                      message: 'Room deleted'},
                       status: :ok
     end
 
@@ -30,11 +31,11 @@ module Api
       room = room.find(params[:id])
       if room.update_attributes(room_params)
         render json: { status: 'SUCCESS',
-                      message: 'Updated Room',} , 
+                      message: 'Updated Room'} , 
                       status: :ok
       else
         render json: { status: 'ERROR',
-                      message: 'Room not updated',} , 
+                      message: 'Room not updated'} , 
                       status: :unprocessable_entity
       end
     end

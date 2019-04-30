@@ -1,5 +1,5 @@
 module Api
-  class Admin::BookingsController < ApplicationController
+  class BookingsController < ApplicationController
     def index
       render json: Booking.all
     end
@@ -13,29 +13,26 @@ module Api
       if booking.save
         render json: booking
       else
-        render json: { status: 'ERROR', 
-                      message: 'Booking not saved' }, 
-                      status: status: :unprocessable_entity
+        render json: { message: 'Booking not saved' }, 
+                       status: :unprocessable_entity
+      end
     end
 
     def destroy
       booking = Booking.find(params[:id])
       booking.destroy
-        render json: { status: 'SUCCESS',
-                      message: 'Booking deleted', },
-                      status: :ok
+        render json: { message: 'Booking deleted' },
+                       status: :ok
     end
 
     def update
       booking = booking.find(params[:id])
       if booking.update_attributes(booking_params)
-        render json: { status: 'SUCCESS',
-                      message: 'Updated Booking',} , 
-                      status: :ok
+        render json: { message: 'Updated Booking'} , 
+                       status: :ok
       else
-        render json: { status: 'ERROR',
-                      message: 'Booking not updated',} , 
-                      status: :unprocessable_entity
+        render json: { message: 'Booking not updated'} , 
+                       status: :unprocessable_entity
       end
     end
 
