@@ -1,10 +1,23 @@
 class User < ApplicationRecord
+  has_secure_password
+  has_secure_token
+
+  def invalidate_token
+    update(token: nil)
+  end
+
+  def self.valid_login?(email, password)
+    user = find_by(email: email)
+    user if user && user.authenticate(password)
+  end
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
   has_many :bookings
+  
 
   def self.from_omniauth(auth)
     user = where(email: auth.info.email.downcase).first_or_create do |user|
@@ -14,5 +27,7 @@ class User < ApplicationRecord
     provider = Provider.find_or_create_by(name: auth.provider, uid: auth.uid, user_id: user.id)
     user
   end
+
+
 
 end
