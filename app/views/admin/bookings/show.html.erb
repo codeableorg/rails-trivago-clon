@@ -1,9 +1,9 @@
-<h2><%= Welcome Admin this is the room @hotel.room_id %></h2>
-<p>From: <%= @hotel.start_date %></p>
-<p>To: <%= @hotel.end_date %></p>
-<p>City: <%= @hotel.paid_price %></p>
-<p>Country: <%= @hotel.user_id %></p>
-<p>Address: <%= @hotel.room_id %></p>
+<h2><%= Welcome Admin this is the room @booking.room_id %></h2>
+<p>From: <%= @booking.start_date %></p>
+<p>To: <%= @booking.end_date %></p>
+<p>City: <%= @booking.paid_price %></p>
+<p>Country: <%= @booking.user_id %></p>
+<p>Address: <%= @booking.room_id %></p>
 
 <%= link_to 'Back', admin_bookings_path %>
 <%= link_to "Edit", edit_admin_booking_path(@booking) %>
