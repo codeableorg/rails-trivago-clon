@@ -1,0 +1,10 @@
+<h1>Rooms#show</h1>
+<p>Find me in app/views/rooms/show.html.erb</p>
+<h2><%= @room.name %></h2>
+<p>Amount of beds: <%= @room.amount_of_beds %></p>
+<p>Price: <%= @room.price %></p>
+<p>Hotel: <%= @room.hotel.name %></p>
+
+<%= link_to 'Back', admin_rooms_path %>
+<%= link_to "Edit", edit_admin_room_path(@room) %>
+<%= link_to "Delete", admin_room_path(@room), method: :delete, data: { confirm: "Do you really want to delete this room?" } %>

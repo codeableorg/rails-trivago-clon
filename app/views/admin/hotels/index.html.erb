@@ -1,0 +1,12 @@
+<h1>Hotels#index</h1>
+<p>Find me in app/views/hotels/index.html.erb</p>
+
+<%= link_to "Create a New Hotel", new_admin_hotel_path %>
+
+<% @hotels.each do |hotel| %>
+  <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
+  <p>Email: <%= hotel.email %></p>
+  <p>City: <%= hotel.city %></p>
+  <p>Country: <%= hotel.country %></p>
+  <p>Address: <%= hotel.address %></p>
+<% end%>
