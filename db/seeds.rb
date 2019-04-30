@@ -23,12 +23,12 @@ end
 # Add users
 #
 p "Adding 5 users and 5 admin"
-user1 = User.create(name: Faker::Name.unique.name, email: "imadeyvi+user@gmail.com", password: "123456")
+user1 = User.create(name: Faker::Name.unique.name, email: "iamdeyvi+user@gmail.com", password: "123456")
 user2 = User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+user@gmail.com", password: "123456")
 user3 = User.create(name: Faker::Name.unique.name, email: "cayala.w+user@gmail.com", password: "123456")
 user4 = User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+user@gmail.com", password: "123456")
 user5 = User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+user@gmail.com", password: "123456")
-User.create(name: Faker::Name.unique.name, email: "imadeyvi+admin@gmail.com", password: "123456", role: "admin")
+User.create(name: Faker::Name.unique.name, email: "iamdeyvi+admin@gmail.com", password: "123456", role: "admin")
 User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+admin@gmail.com", password: "123456", role: "admin")
 User.create(name: Faker::Name.unique.name, email: "cayala.w+admin@gmail.com", password: "123456", role: "admin")
 User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+admin@gmail.com", password: "123456", role: "admin")
@@ -36,7 +36,7 @@ User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com"
 
 # Add Hotel
 p "Adding 5 hotels"
-hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "madeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
+hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "iamdeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
 hotel2 = Hotel.create(name: Faker::Company.unique.name, email: "cesarcachay1996+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel2.jpg"))
 hotel3 = Hotel.create(name: Faker::Company.unique.name, email: "cayala.w+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel3.jpg"))
 hotel4 = Hotel.create(name: Faker::Company.unique.name, email: "cristian.granda.pastor+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel4.jpg"))
@@ -59,7 +59,8 @@ room10 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4),
 # Add 3 bookings
 # Check relation booking with room and user
 p "Adding 3 bookings"
-book1 = user1.bookings.create!(start_date: Date.parse("May 8 2018"), end_date: Date.parse("May 10 2018"), paid_price: room1.price, room_id: 1)
+book1 = user1.bookings.create!(start_date: Date.today, end_date: Date.today + 1.days, paid_price: room1.price, room_id: 1)
+user1.bookings.create!(start_date: Date.today + 3, end_date: Date.today + 5.days, paid_price: room1.price, room_id: 1)
 # book1.rooms << room1
 book2 = user3.bookings.create!(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), paid_price: room4.price, room_id: 4)
 # book2.rooms << room4
