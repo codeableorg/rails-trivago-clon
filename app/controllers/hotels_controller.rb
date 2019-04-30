@@ -1,6 +1,10 @@
 class HotelsController < ApplicationController
   def index
-    @hotels = Hotel.all
+    if params[:search].present?
+      @hotels = Hotel.where(name: params[:search])
+    else
+      @hotels = Hotel.all
+    end
   end
 
   def show

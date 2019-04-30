@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  resources :hotels
+  resources :hotels  
+
 end
