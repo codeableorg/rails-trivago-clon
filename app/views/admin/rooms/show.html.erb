@@ -4,10 +4,12 @@
 <p>Amount of beds: <%= @room.amount_of_beds %></p>
 <p>Price: <%= @room.price %></p>
 <p>Hotel: <%= @room.hotel.name %></p>
-<% if @article.cover.attached? %>
+<% if @room.cover.attached? %>
   <%= image_tag @room.cover.variant(resize: "300x300") %>
 <% end %>
 
-<%= link_to 'Back', admin_rooms_path %>
-<%= link_to "Edit", edit_admin_room_path(@room) %>
-<%= link_to "Delete", admin_room_path(@room), method: :delete, data: { confirm: "Do you really want to delete this room?" } %>
+<div>
+  <%= link_to 'Back', admin_rooms_path %>
+  <%= link_to "Edit", edit_admin_room_path(@room) %>
+  <%= link_to "Delete", admin_room_path(@room), method: :delete, data: { confirm: "Do you really want to delete this room?" } %>
+</div>
