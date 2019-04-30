@@ -16,11 +16,10 @@ class Admin::HotelsController < ApplicationController
   end
 
   def create
-    @hotel = Hotel.create(set_hotels)
-    @hotel = current_user.hotels.create(set_hotels)
+    @hotel = Hotel.create(hotel_params)
 
     if @hotel.save 
-      redirect_to hotels_path(@hotel), notice: 'Hotel already created!'
+      redirect_to admin_hotel_path(@hotel), notice: 'Hotel already created!'
     else
       render :new
     end
@@ -28,7 +27,7 @@ class Admin::HotelsController < ApplicationController
 
   def update
     if @hotel.update(hotel_params)
-      redirect_to hotels_path(@hotel), notice: 'Hotel already updated!'
+      redirect_to admin_hotel_path(@hotel), notice: 'Hotel already updated!'
     else
       render :edit
     end
@@ -36,7 +35,7 @@ class Admin::HotelsController < ApplicationController
 
   def destroy
     @hotel.destroy
-    redirect_to hotels_path, notice: "Hotel already deleted!"
+    redirect_to admin_hotels_path, notice: "Hotel already deleted!"
   end
 
   private

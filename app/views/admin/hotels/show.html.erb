@@ -6,4 +6,6 @@
 <p>Country: <%= @hotel.country %></p>
 <p>Address: <%= @hotel.address %></p>
 
-<%= link_to "Go back to the list of Hotels", admin_hotels_path %>
+<%= link_to 'Back', admin_hotels_path %>
+<%= link_to "Edit", edit_admin_hotel_path(@hotel) %>
+<%= link_to "Delete", admin_hotel_path(@hotel), method: :delete, data: { confirm: "Do you really want to delete this hotel?" } %>

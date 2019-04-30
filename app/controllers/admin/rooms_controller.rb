@@ -16,11 +16,10 @@ class Admin::RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(set_rooms)
-    @room = current_user.rooms.create(set_rooms)
+    @room = Room.create(room_params)
 
     if @room.save 
-      redirect_to rooms_path(@room), notice: 'Room already created!'
+      redirect_to admin_room_path(@room), notice: 'Room already created!'
     else
       render :new
     end
@@ -28,7 +27,7 @@ class Admin::RoomsController < ApplicationController
 
   def update
     if @room.update(room_params)
-      redirect_to rooms_path(@room), notice: 'Room already updated!'
+      redirect_to admin_room_path(@room), notice: 'Room already updated!'
     else
       render :edit
     end
@@ -36,7 +35,7 @@ class Admin::RoomsController < ApplicationController
 
   def destroy
     @room.destroy
-    redirect_to rooms_path, notice: "Room already deleted!"
+    redirect_to admin_rooms_path, notice: "Room already deleted!"
   end
 
   private
