@@ -1,0 +1,12 @@
+<h2><%= @hotel.name %></h2>
+<p>Email: <%= @hotel.email %></p>
+<p>City: <%= @hotel.city %></p>
+<p>Country: <%= @hotel.country %></p>
+<p>Address: <%= @hotel.address %></p>
+<% if @article.cover.attached? %>
+  <%= image_tag @hotel.cover.variant(resize: "300x300") %>
+<% end %>
+
+<%= link_to 'Back', admin_hotels_path %>
+<%= link_to "Edit", edit_admin_hotel_path(@hotel) %>
+<%= link_to "Delete", admin_hotel_path(@hotel), method: :delete, data: { confirm: "Do you really want to delete this hotel?" } %>
