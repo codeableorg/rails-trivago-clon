@@ -6,6 +6,9 @@
     <%= submit_tag('Search', :name => nil) %>
 <% end %>
 
-<% @rooms.each do |room| %>  
-  <p><%= room.inspect %></p>
+<ul>
+<% @rooms.each do |room| %>
+  <li><%= link_to room.name, controller: "rooms", action: "show", id: room  %></li>
+  <li><%= room.inspect %></li>
 <% end %>
+</ul>
