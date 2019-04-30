@@ -1,12 +1,34 @@
-<h1>Hotels#index</h1>
-<p>Find me in app/views/hotels/index.html.erb</p>
 
-<%= link_to "Create a New Hotel", new_admin_hotel_path %>
+<div>
+  <h2>List Hotels</h2>
+  <%= link_to "Create a New Hotel", new_admin_hotel_path %>
+</div>
 
-<% @hotels.each do |hotel| %>
-  <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
-  <p>Email: <%= hotel.email %></p>
-  <p>City: <%= hotel.city %></p>
-  <p>Country: <%= hotel.country %></p>
-  <p>Address: <%= hotel.address %></p>
-<% end%>
+<table>
+  <thead>
+    <tr>
+      <th>Hotel Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hotels.each do |hotel| %>
+      <tr>
+        <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
+        <td>Email: <%= hotel.email %></td>
+        <td>City: <%= hotel.city %></td>
+        <td>Country: <%= hotel.country %></td>
+        <td>Address: <%= hotel.address %></td>
+        <td>
+          <% if hotel.cover.attached? %>
+            <%= image_tag hotel.cover.variant(resize: "300x300") %>
+          <% end %>
+        </td>
+      <% end%>
+      </tr>  
+  </tbody>
+</table>
