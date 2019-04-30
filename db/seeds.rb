@@ -59,7 +59,8 @@ room10 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4),
 # Add 3 bookings
 # Check relation booking with room and user
 p "Adding 3 bookings"
-book1 = user1.bookings.create!(start_date: Date.parse("May 8 2018"), end_date: Date.parse("May 10 2018"), paid_price: room1.price, room_id: 1)
+book1 = user1.bookings.create!(start_date: Date.today, end_date: Date.today + 1.days, paid_price: room1.price, room_id: 1)
+user1.bookings.create!(start_date: Date.today + 3, end_date: Date.today + 5.days, paid_price: room1.price, room_id: 1)
 # book1.rooms << room1
 book2 = user3.bookings.create!(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), paid_price: room4.price, room_id: 4)
 # book2.rooms << room4
@@ -76,3 +77,21 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
 
+
+
+# condition_1 = @room.bookings.where(
+#   'start_date <= ? AND end_date >= ?',
+#   params[:min_date], params[:max_date]
+# ).exists?
+
+# # start_date of some booking is included ?
+# condition_2 = @room.bookings.where(
+#   'start_date >= ? AND start_date <= ?',
+#   params[:min_date], params[:max_date]
+# ).exists?
+
+# # end_date of some booking is included ?
+# condition_3 = @room.bookings.where(
+#   'end_date >= ? AND end_date <= ?',
+#   params[:min_date], params[:max_date]
+# ).exists?
