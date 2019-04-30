@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_144408) do
+ActiveRecord::Schema.define(version: 2019_04_30_173757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 2019_04_30_144408) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "rooms"
-  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "rooms", on_delete: :cascade
+  add_foreign_key "bookings", "users", on_delete: :cascade
   add_foreign_key "providers", "users"
   add_foreign_key "rooms", "hotels"
 end
