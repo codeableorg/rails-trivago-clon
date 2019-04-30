@@ -1,5 +1,5 @@
 module Api
-  class BookingsController < ApplicationController
+  class BookingsController < ApiController
     def index
       render json: Booking.all
     end
@@ -26,7 +26,7 @@ module Api
     end
 
     def update
-      booking = booking.find(params[:id])
+      booking = Booking.find(params[:id])
       if booking.update_attributes(booking_params)
         render json: { message: 'Updated Booking'} , 
                        status: :ok
