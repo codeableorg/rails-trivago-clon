@@ -15,6 +15,10 @@
  */
 body{
   font-family: sans-serif;
+  color: #333;
+  background-color: azure; 
+  margin: 0;
+  padding: 0;
 }
 
 .logo{
@@ -34,6 +38,30 @@ body{
   color: #C94A38; 
 }
 
+.logo-grey {
+  color: grey;
+  font-size: 0.8em;
+}
+
+.placeholder-logo {
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.login {
+  font-size: 12px;
+}
+
+.login a {
+  text-decoration: none;
+  color: #027FAF;
+}
+
+.login a:hover {
+  text-decoration: underline;
+  background-color: #F49027;
+}
+
 nav {
   font-size: 14px;
   color: black;
@@ -43,6 +71,19 @@ nav {
 nav a {
   padding-bottom: 0.25em;
   text-decoration: none;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav li a:hover {
+  background-color: palegoldenrod;
 }
 
 .navbar {
@@ -57,10 +98,84 @@ nav a {
   margin-right: 5px;
   text-decoration: none;
   color: rgb(36, 36, 36);
+  padding: 10px;
 }
 
 .container {
-  max-width: 1200px;
+  /* max-width: 1200px; */
+  width: 80%;
   margin: auto;
 }
 
+.controls {
+  text-align: right;
+  margin: 15px 0;
+}
+
+.btn {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #4CBB17;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: green;
+  color: #ddd;
+}
+
+.piece {
+  border: 1px solid #555;
+  box-shadow: 2px 2px 3px #aaa;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.piece img {
+  display: block;
+  border-radius: 10px;
+}
+
+.piece-right {
+  margin-left: 20px;
+  font-size: .8em;
+  justify-content: left;
+}
+
+.piece-right a {
+  text-decoration: none;
+  color: #027FAF;
+}
+
+.piece-right a:hover {
+  text-decoration: underline;
+}
+
+table {
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+table img {
+  display: block;
+}
+
+table a {
+  text-decoration: none;
+  color: #027FAF;
+}
+
+table th {
+  background-color: #ccc;
+}
+
+table td {
+  padding: 5px 10px;
+  background-color: #ddd;
+}
