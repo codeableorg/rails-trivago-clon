@@ -1,2 +1,10 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h2><%= Welcome Admin this is the room @hotel.room_id %></h2>
+<p>From: <%= @hotel.start_date %></p>
+<p>To: <%= @hotel.end_date %></p>
+<p>City: <%= @hotel.paid_price %></p>
+<p>Country: <%= @hotel.user_id %></p>
+<p>Address: <%= @hotel.room_id %></p>
+
+<%= link_to 'Back', admin_bookings_path %>
+<%= link_to "Edit", edit_admin_booking_path(@booking) %>
+<%= link_to "Delete", admin_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>s
