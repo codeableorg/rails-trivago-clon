@@ -77,21 +77,3 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
 
-
-
-# condition_1 = @room.bookings.where(
-#   'start_date <= ? AND end_date >= ?',
-#   params[:min_date], params[:max_date]
-# ).exists?
-
-# # start_date of some booking is included ?
-# condition_2 = @room.bookings.where(
-#   'start_date >= ? AND start_date <= ?',
-#   params[:min_date], params[:max_date]
-# ).exists?
-
-# # end_date of some booking is included ?
-# condition_3 = @room.bookings.where(
-#   'end_date >= ? AND end_date <= ?',
-#   params[:min_date], params[:max_date]
-# ).exists?
