@@ -36,7 +36,7 @@ User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com"
 
 # Add Hotel
 p "Adding 5 hotels"
-hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "madeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
+hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "iamdeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
 hotel2 = Hotel.create(name: Faker::Company.unique.name, email: "cesarcachay1996+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel2.jpg"))
 hotel3 = Hotel.create(name: Faker::Company.unique.name, email: "cayala.w+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel3.jpg"))
 hotel4 = Hotel.create(name: Faker::Company.unique.name, email: "cristian.granda.pastor+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel4.jpg"))

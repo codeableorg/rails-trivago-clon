@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def send_registration_mail
     User.where(role: "admin").each do |user|
-      AdminMailer.with(user: user).notify_admin.deliver_later
+      AdminMailer.with(user: user, user_created:self).notify_admin.deliver_later
     end
   end
 end
