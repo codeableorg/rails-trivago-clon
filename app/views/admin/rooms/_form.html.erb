@@ -1,0 +1,40 @@
+<%= form_for [:admin, @room] do |f| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount_of_beds %>
+    <%= f.number_field :amount_of_beds %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hotel_id %>
+    <%= f.number_field :hotel_id %>
+  </div>
+
+  <p>
+    <%= f.label :cover %><br />
+    <%= f.file_field :cover %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
