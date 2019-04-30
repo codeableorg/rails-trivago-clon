@@ -16,10 +16,12 @@
   <tbody>
     <% @rooms.each do |room| %>
       <tr>
-        <td>Room Name: <%= room.name %>
-        <td>Amount of beds: <%= room.amount_of_beds %></td>
-        <td>Price: <%= room.price %></td>
-        <td>Hotel Name: <%= room.hotel.name %></td>
+        <div>
+          <td>Room Name: <%=link_to room.name, admin_room_path(room) %>
+          <td>Amount of beds: <%= room.amount_of_beds %></td>
+          <td>Price: <%= room.price %></td>
+          <td>Hotel Name: <%= room.hotel.name %></td>
+        </div>
         <td>
           <% if room.cover.attached? %>
             <%= image_tag room.cover.variant(resize: "300x300") %>
