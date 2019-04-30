@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'home#index'
+  # root to: 'home#index'
   namespace :admin do
     resources :hotels
     resources :rooms
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :rooms
     resources :bookings
   end
+  
   resources :hotels do
     member do
       get 'rooms'
