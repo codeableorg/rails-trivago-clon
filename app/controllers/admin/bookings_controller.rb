@@ -16,20 +16,18 @@ class Admin::BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(set_bookings)
-    @booking = current_user.bookings.create(set_bookings)
+    @booking = Booking.new(booking_params)
 
     if @booking.save 
-      redirect_to bookings_path(booking), notice: 'Booking already created!'
+      redirect_to admin_bookings_path(booking), notice: 'Booking already created!'
     else
       render :new
     end
   end
 
   def update
-    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to bookings_path(@booking), notice: 'Booking already updated!'
+      redirect_to admin_bookings_path(@booking), notice: 'Booking already updated!'
     else
       render :edit
     end
@@ -37,7 +35,7 @@ class Admin::BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to bookings_path, notice: "Booking already deleted!"
+    redirect_to admin_bookings_path, notice: "Booking already deleted!"
   end
 
   private
