@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-            # has_secure_password
+  # has_secure_password
+  # Not needed, devise give us this :eye
+
             # has_secure_token
 
             # def invalidate_token
@@ -10,9 +12,9 @@ class User < ApplicationRecord
             #   user = find_by(email: email)
             #   user if user && user.authenticate(password)
             # end
+            # self.valid_long Check Slack from Kattya - 1st Find by email
+            # 2nd User.validpassword 
   
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
