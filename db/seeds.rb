@@ -53,16 +53,14 @@ room8 = hotel4.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), 
 room9 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
 room10 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
 
+
 # Add 3 bookings
 # Check relation booking with room and user
 p "Adding 3 bookings"
-
 book1 = user1.bookings.create!(start_date: Date.parse("May 8 2018"), end_date: Date.parse("May 10 2018"), paid_price: room1.price, room_id: 1)
 # book1.rooms << room1
-
 book2 = user3.bookings.create!(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), paid_price: room4.price, room_id: 4)
 # book2.rooms << room4
-
 book3 = user5.bookings.create!(start_date: Date.parse("October 23 2018"), end_date: Date.parse("October 23 2018"), paid_price: room6.price, room_id: 6)
 # book3.rooms << room6
 
