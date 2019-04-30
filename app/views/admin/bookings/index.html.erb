@@ -1,12 +1,19 @@
-<%= link_to "Create a New Booking", new_admin_booking_path %>
-
+<div class="controls">
+  <%= link_to "New Booking", new_admin_booking_path, class: "btn" %>
+</div>
 <% @bookings.each do |booking| %>
-  <h2><%= link_to booking.id, admin_booking_path(booking) %></h2>
-  <p>From: <%= booking.start_date %></p>
-  <p>To: <%= booking.end_date %></p>
-  <p>Paid Price: <%= booking.paid_price %></p>
-  <p>User Name: <%= booking.user.name %></p>
-  <p>User Email: <%= booking.user.email %></p>
-  <p>Room: <%= booking.room.name %></p>
-  <p>Hotel: <%= booking.room.hotel.name %></p>
+<div class="piece">
+  <%= image_tag(booking.room.hotel.cover.variant(resize: "200x200"), :alt => booking.room.hotel.name) %>
+  <div class="piece-right">
+    <h2><%= link_to booking.room.hotel.name, admin_booking_path(booking) %></h2>
+    <%# <h2><%= link_to booking.id, admin_booking_path(booking) %><%#</h2> %>
+    <p><b>From:</b> <%= booking.start_date %></p>
+    <p><b>To:</b> <%= booking.end_date %></p>
+    <p><b>Paid Price:</b> US$ <%= booking.paid_price %></p>
+    <p><b>Name:</b> <%= mail_to booking.user.email, booking.user.name %></p>
+    <%# <p>User Email: <%= booking.user.email %><%#</p> %>
+    <p><b>Room name:</b> <%= booking.room.name %></p>
+    <%# <p>Hotel: <%= booking.room.hotel.name %><%#</p> %>
+  </div>
+</div>
 <% end%>
