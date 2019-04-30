@@ -1,6 +1,6 @@
 <%= link_to "Create a New Booking", new_admin_booking_path %>
 
-<% @hotels.each do |hotel| %>
+<% @bookings.each do |booking| %>
   <h2><%= link_to booking.name, admin_hotel_path(booking) %></h2>
   <p>From: <%= booking.start_date %></p>
   <p>To: <%= booking.end_date %></p>

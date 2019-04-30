@@ -45,6 +45,6 @@ class Admin::HotelsController < ApplicationController
   end
 
   def hotel_params
-    params.require(:hotel).permit(:name, :email, :city, :country, :address)
+    params.require(:hotel).permit(:name, :email, :city, :country, :address, :cover)
   end
 end
