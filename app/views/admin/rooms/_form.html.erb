@@ -24,10 +24,8 @@
     <%= f.number_field :price %>
   </div>
 
-  <div class="field">
-    <%= f.label :hotel_id %>
-    <%= f.number_field :hotel_id %>
-  </div>
+  <p>Hotel</p>
+  <%= f.collection_select(:hotel_id, Hotel.all, :id, :name) %>
 
   <p>
     <%= f.label :cover %><br />
