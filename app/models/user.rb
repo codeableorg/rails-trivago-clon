@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create :send_welcome_email
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
@@ -14,5 +16,10 @@ class User < ApplicationRecord
     provider = Provider.find_or_create_by(name: auth.provider, uid: auth.uid, user_id: user.id)
     user
   end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_later
+  end
+
 
 end
