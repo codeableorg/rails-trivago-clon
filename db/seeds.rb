@@ -41,50 +41,36 @@ hotel4 = Hotel.create(name: Faker::Company.unique.name, email: "cristian.granda.
 hotel5 = Hotel.create(name: Faker::Company.unique.name, email: "ry.yrupailla+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address)
 
 # Add rooms
-# Check relation room with hotel
 p "Adding 10 rooms"
-room1 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 1, price: rand(50..300))
-# room1.hotel << hotel1
-room2 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 1, price: rand(50..300))
-# room2.hotel << hotel1
-room3 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 2, price: rand(50..300))
-# room3.hotel << hotel2
-room4 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 2, price: rand(50..300))
-# room4.hotel << hotel2
-room5 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 3, price: rand(50..300))
-# room5.hotel << hotel3
-room6 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 3, price: rand(50..300))
-# room6.hotel << hotel3
-room7 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 4, price: rand(50..300))
-# room7.hotel << hotel4
-room8 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 4, price: rand(50..300))
-# room8.hotel << hotel4
-room9 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 5, price: rand(50..300))
-# room9.hotel << hotel5
-room10 = Room.create(name: Faker::Name.name, amount_of_beds: rand(1..4), hotel_id: 5, price: rand(50..300))
-# room10.hotel << hotel5
+room1 = hotel1.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room2 = hotel1.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room3 = hotel2.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room4 = hotel2.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room5 = hotel3.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room6 = hotel3.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room7 = hotel4.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room8 = hotel4.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room9 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+room10 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300))
+
 
 # Add 3 bookings
 # Check relation booking with room and user
 p "Adding 3 bookings"
-
-book1 = Booking.create(start_date: Date.parse("May 8 2018"), end_date: Date.parse("May 10 2018"), user_id: 1, room_id: 1, paid_price: room1.price)
-# book1.room << room1
-# book1.user << user1
-book2 = Booking.create(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), user_id: 3, room_id: 1, paid_price: room4.price)
-# book2.room << room4
-# book1.user << user3
-book3 = Booking.create(start_date: Date.parse("October 23 2018"), end_date: Date.parse("October 23 2018"), user_id: 5, room_id: 1, paid_price: room6.price)
-# book3.room << room6
-# book3.user << user5
+book1 = user1.bookings.create!(start_date: Date.parse("May 8 2018"), end_date: Date.parse("May 10 2018"), paid_price: room1.price, room_id: 1)
+# book1.rooms << room1
+book2 = user3.bookings.create!(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), paid_price: room4.price, room_id: 4)
+# book2.rooms << room4
+book3 = user5.bookings.create!(start_date: Date.parse("October 23 2018"), end_date: Date.parse("October 23 2018"), paid_price: room6.price, room_id: 6)
+# book3.rooms << room6
 
 # Add promotions
 p "Adding 4 promotions"
 # Check relation promotion with room and hotel
-promotion1 = Promotion.create(start_date: Date.parse("January 15 2019"), end_date: Date.parse("April 15 2019"), discount_type: "Percentage", discount_amount: 5, promotionable_type: "Hotel", promotionable_id: 1)
+promotion1 = hotel1.promotions.create(start_date: Date.parse("January 15 2019"), end_date: Date.parse("April 15 2019"), discount_type: "Percentage", discount_amount: 5)
 # promotion1.hotel << hotel1
-promotion2 = Promotion.create(start_date: Date.parse("February 10 2019"), end_date: Date.parse("February 17 2019"), discount_type: "Fixed", discount_amount: 30, promotionable_type: "Room", promotionable_id: 3)
+promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"), end_date: Date.parse("February 17 2019"), discount_type: "Fixed", discount_amount: 30)
 # promotion2.room << room3
-promotion3 = Promotion.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9, promotionable_type: "Room", promotionable_id: 5)
+promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
 
