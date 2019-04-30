@@ -1,2 +1,22 @@
-<h1>Hotels#show</h1>
+<h1>Room : <%= @room.name %></h1>
+
+<%= form_tag(room_path(params[:id]), {:method => 'get'}) do %>
+    <%= date_field_tag(:min_date, Date.today)%>
+    <%= date_field_tag(:max_date, Date.today + 10.days)%>
+    <%= submit_tag('I want to book', :name => nil) %>
+<% end %>
+<p class="error"><%= @error %></p>
 <p><%= @room.inspect %></p>
+
+<h2>bookings</h2>
+<ul>
+
+<% @bookings.each do |booking| %>
+  <% if @conflict_ids.include? booking.id %>
+    <li><strong> <%= booking.inspect %> : conflict</strong> </li> 
+  <% else %>
+    <li><%= booking.inspect %></li> 
+  <% end %> 
+<% end %>
+</ul>
+
