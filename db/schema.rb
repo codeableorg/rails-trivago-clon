@@ -99,8 +99,11 @@ ActiveRecord::Schema.define(version: 2019_04_30_173757) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "role"
+    t.string "token"
+    t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["token"], name: "index_users_on_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

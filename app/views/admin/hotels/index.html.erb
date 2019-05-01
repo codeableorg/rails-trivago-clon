@@ -1,9 +1,10 @@
 
 <div>
-  <h2>List Hotels</h2>
-  <%= link_to "Create a New Hotel", new_admin_hotel_path %>
+  <div class="controls">
+    <%= link_to "New Hotel", new_admin_hotel_path, class: "btn" %>
+  </div>
 </div>
-
+<h2>List Hotels</h2>
 <table>
   <thead>
     <tr>
@@ -19,13 +20,14 @@
     <% @hotels.each do |hotel| %>
       <tr>
         <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
-        <td>Email: <%= hotel.email %></td>
-        <td>City: <%= hotel.city %></td>
-        <td>Country: <%= hotel.country %></td>
-        <td>Address: <%= hotel.address %></td>
+        <td><%= mail_to hotel.email, "Contact" %></td>
+        <%#<td><%= hotel.email %><%#</td> %>
+        <td><%= hotel.city %></td>
+        <td><%= hotel.country %></td>
+        <td><%= hotel.address %></td>
         <td>
           <% if hotel.cover.attached? %>
-            <%= image_tag hotel.cover.variant(resize: "300x300") %>
+            <%= image_tag(hotel.cover.variant(resize: "200x200"), :tag => hotel.name) %>
           <% end %>
         </td>
       <% end%>

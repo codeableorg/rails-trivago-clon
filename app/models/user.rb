@@ -1,4 +1,22 @@
 class User < ApplicationRecord
+
+  # has_secure_password
+  # Not needed, devise give us this :eye
+
+            # has_secure_token
+
+            # def invalidate_token
+            #   update(token: nil)
+            # end
+
+            # def self.valid_login?(email, password)
+            #   user = find_by(email: email)
+            #   user if user && user.authenticate(password)
+            # end
+            # self.valid_long Check Slack from Kattya - 1st Find by email
+            # 2nd User.validpassword 
+  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_welcome_email, :send_registration_mail
@@ -7,6 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
   has_many :bookings
+  
 
   def self.from_omniauth(auth)
     user = where(email: auth.info.email.downcase).first_or_create do |user|
@@ -23,7 +42,8 @@ class User < ApplicationRecord
 
   def send_registration_mail
     User.where(role: "admin").each do |user|
-      AdminMailer.with(user: user).notify_admin.deliver_later
+      AdminMailer.with(user: user, user_created:self).notify_admin.deliver_later
     end
   end
+
 end

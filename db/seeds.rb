@@ -36,7 +36,7 @@ User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com"
 
 # Add Hotel
 p "Adding 5 hotels"
-hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "madeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
+hotel1 = Hotel.create(name: Faker::Company.unique.name, email: "iamdeyvi+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel1.jpg"))
 hotel2 = Hotel.create(name: Faker::Company.unique.name, email: "cesarcachay1996+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel2.jpg"))
 hotel3 = Hotel.create(name: Faker::Company.unique.name, email: "cayala.w+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel3.jpg"))
 hotel4 = Hotel.create(name: Faker::Company.unique.name, email: "cristian.granda.pastor+hotel@gmail.com", city: Faker::Address.city, country: Faker::Address.country, address: Faker::Address.full_address, cover: get_image("hotels/hotel4.jpg"))
@@ -77,12 +77,3 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
 
-# <ul>
-# <% @bookings.each do |booking| %>
-#   <% if @conflict_ids.include? booking.id %>
-#     <li><strong> <%= booking.inspect %> : conflict</strong> </li> 
-#   <% else %>
-#     <li><%= booking.inspect %></li> 
-#   <% end %> 
-# <% end %>
-# </ul>
