@@ -77,3 +77,12 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
 # promotion1.room << room5
 
+# <ul>
+# <% @bookings.each do |booking| %>
+#   <% if @conflict_ids.include? booking.id %>
+#     <li><strong> <%= booking.inspect %> : conflict</strong> </li> 
+#   <% else %>
+#     <li><%= booking.inspect %></li> 
+#   <% end %> 
+# <% end %>
+# </ul>

@@ -2,8 +2,8 @@ class RoomsController < ApplicationController
 
   def show    
     @room = Room.find(params[:id])
+    @conflict_ids = []
     @error = ''
-
     if params[:min_date].present? && params[:max_date].present?
 
       @bookings = @room.bookings
@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
       ).ids
 
     else
-      @bookings = @room.bookings
+      @bookings = @room.bookings     
     end
     
   end
