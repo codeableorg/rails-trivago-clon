@@ -62,30 +62,6 @@ body {
   background-color: #f49027;
 }
 
-.logo-grey {
-  color: grey;
-  font-size: 0.8em;
-}
-
-.placeholder-logo {
-  font-size: 1.8em;
-  text-align: center;
-}
-
-.login {
-  font-size: 12px;
-}
-
-.login a {
-  text-decoration: none;
-  color: #027faf;
-}
-
-.login a:hover {
-  text-decoration: underline;
-  background-color: #f49027;
-}
-
 nav {
   font-size: 14px;
   color: black;
@@ -185,12 +161,13 @@ nav li a:hover {
 
 .piece-right a {
   text-decoration: none;
-  color: #027faf;
+  color: #027FAF;
 }
 
 .piece-right a:hover {
   text-decoration: underline;
 }
+/* Table */
 table {
   font-size: 0.8em;
   text-align: center;
@@ -203,7 +180,7 @@ table img {
 
 table a {
   text-decoration: none;
-  color: #027faf;
+  color: #027FAF;
 }
 
 table th {
