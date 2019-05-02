@@ -1,3 +1,6 @@
-<%= render 'form', hotel: @booking %>
+<h2>New booking</h2>
 
-<%= link_to 'Back', admin_bookings_path %>
+<%= render 'form', hotel: @booking %>
+<div class="controls">
+  <%= link_to "« Back", admin_bookings_path, :class => "btn btn-back" %>
+</div>

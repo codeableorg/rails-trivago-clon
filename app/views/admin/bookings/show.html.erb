@@ -1,12 +1,22 @@
-<h2><%= @booking.id %></h2>
-<p>From: <%= @booking.start_date %></p>
-<p>To: <%= @booking.end_date %></p>
-<p>Paid Price: <%= @booking.paid_price %></p>
-<p>User Name: <%= @booking.user.name %></p>
-<p>User Email: <%= @booking.user.email %></p>
-<p>Room: <%= @booking.room.name %></p>
-<p>Hotel: <%= @booking.room.hotel.name %></p>
-
-<%= link_to 'Back', admin_bookings_path %>
-<%= link_to "Edit", edit_admin_booking_path(@booking) %>
-<%= link_to "Delete", admin_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>
+<h2>Details:</h2> <%# <%= @booking.id %>
+<div class="piece">
+  <% if @booking.room.hotel.cover.attached? %>
+    <%= image_tag @booking.room.hotel.cover.variant(resize: "200x200") %>
+  <% end %>
+  <div class="piece-right">
+    <p><b>Hotel:</b> <%= @booking.room.hotel.name %></p>
+    <p><b>Room:</b> <%= @booking.room.name %></p>
+    <p><b>Amount of Beds:</b> <%= @booking.room.amount_of_beds %></p>
+  </div>
+  <div class="piece-right">
+    <p><b>From:</b> <%= @booking.start_date %></p>
+    <p><b>To:</b> <%= @booking.end_date %></p>
+    <p><b>Paid Price:</b> US $ <%= @booking.paid_price %></p>
+    <p><b>Contact User:</b> <%= mail_to @booking.user.email, @booking.user.name %></p>
+  </div>
+</div>
+<div class="controls">
+  <%= link_to "« back", admin_bookings_path, :class => "btn btn-back" %>
+  <%= link_to "✎ edit", edit_admin_booking_path(@booking), :class => "btn btn-edit" %>
+  <%= link_to "🗑 delete", admin_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, :class => "btn btn-delete" %>
+</div>
