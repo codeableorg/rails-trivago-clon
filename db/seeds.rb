@@ -23,11 +23,11 @@ end
 # Add users
 #
 p "Adding 5 users and 5 admin"
-User.create(name: Faker::Name.unique.name, email: "iamdeyvi+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "iamdeyvi+admin@gmail.com", password: "123456", role: "admin")
 User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "cayala.w+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "cayala.w+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com", password: "123456", role: "admin")
 user1 = User.create(name: Faker::Name.unique.name, email: "iamdeyvi+user@gmail.com", password: "123456")
 user2 = User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+user@gmail.com", password: "123456")
 user3 = User.create(name: Faker::Name.unique.name, email: "cayala.w+user@gmail.com", password: "123456")
@@ -70,10 +70,10 @@ book3 = user5.bookings.create!(start_date: Date.parse("October 23 2018"), end_da
 # Add promotions
 p "Adding 4 promotions"
 # Check relation promotion with room and hotel
-promotion1 = hotel1.promotions.create(start_date: Date.parse("January 15 2019"), end_date: Date.parse("April 15 2019"), discount_type: "Percentage", discount_amount: 5)
+promotion1 = hotel1.promotions.create(start_date: Date.parse("January 15 2019"), end_date: Date.parse("April 15 2019"), discount_type: "percentage", discount_amount: 5)
 # promotion1.hotel << hotel1
-promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"), end_date: Date.parse("February 17 2019"), discount_type: "Fixed", discount_amount: 30)
+promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"), end_date: Date.parse("February 17 2019"), discount_type: "fixed", discount_amount: 30)
 # promotion2.room << room3
-promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "Percentage", discount_amount: 9)
+promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "percentage", discount_amount: 9)
 # promotion1.room << room5
 

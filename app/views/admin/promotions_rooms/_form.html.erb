@@ -1,8 +1,9 @@
-<%= form_for @booking do |f| %>
-  <% if @booking.errors.any? %>
+<%= form_for [:admin, @room, @promotion] do |f| %>
+
+  <% if @promotion.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% @booking.errors.full_messages.each do |message| %>
+        <% @promotion.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -20,15 +21,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :paid_price %>
-    <%= f.number_field :paid_price %>
+    <%= f.label :discount_type %>
+    <%= f.select(:discount_type, [['Fixed', 'fixed'], ['Percentage', 'percentage']]) %>
   </div>
 
-  <p>User</p>
-  <%= f.collection_select(:user_id, User.all, :id, :name) %>
-
-  <p>Room</p>
-  <%= f.collection_select(:room_id, Room.all, :id, :name) %>
+  <div class="field">
+    <%= f.label :discount_amount %>
+    <%= f.number_field :discount_amount %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

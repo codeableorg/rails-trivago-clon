@@ -1,57 +1,51 @@
 class BookingsController < ApplicationController
   before_action only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index 
     if params[:search].present?
       @bookings = Booking.where(name: params[:search])
     else
-      @bookings = Booking.all
+      @bookings = Booking.where(user: current_user)
     end
   end
 
   def show
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
-  def create 
+  def create
     @booking = Booking.new(booking_params)
     if @booking.save(booking_params)
-      redirect_to admin_booking_path(@booking), notice: "The booking was successfully created"
+      redirect_to booking_path(@booking), notice: "The booking was successfully created"
     else
       render :new
     end
+    authorize @booking
   end
 
   def edit
+    authorize @booking
   end
 
   def update
     if @booking.update(booking_params)
-      redirect_to admin_booking_path(@booking), notice: "The booking was successfully updated"
+      redirect_to booking_path(@booking), notice: "The booking was successfully updated"
     else
       render :edit
     end
+    authorize @booking
   end
 
   def destroy
     @booking.destroy
-    redirect_to admin_bookings_path, notice: "The booking was successfully deleted"
+    redirect_to bookings_path, notice: "The booking was successfully deleted"
+    authorize @booking
   end
-
-  # def rooms
-  # @booking = Booking.find(params[:id])
-  #   if params[:min_price].present? && params[:max_price].present?
-  #     @rooms = @booking.rooms.where(
-  #       'price <= ? AND price >= ?',
-  #       params[:max_price], params[:min_price]
-  #     )
-  #   else
-  #     @rooms = @booking.rooms
-  #   end
-  # end
 
   private 
 

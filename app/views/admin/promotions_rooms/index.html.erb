@@ -1,0 +1,30 @@
+<div>
+  <h2>List Promotions of room <%= @room.name %></h2>
+  <%= link_to 'Add promotion', new_admin_room_promotion_path(@room) %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Discount Type</th>
+      <th>Discount amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @promotions.each do |promotion|%>
+        <tr>
+          <td><%= promotion.start_date %></td>
+          <td><%= promotion.end_date %></td>
+          <td><%= promotion.discount_type %></td>
+          <td><%= promotion.discount_amount %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_room_promotion_path(@room, promotion) %>
+            <%= link_to 'Delete', admin_room_promotion_path(@room, promotion), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

@@ -46,6 +46,10 @@ class User < ApplicationRecord
     end
   end
 
+  def admin? 
+    self.role == "admin"
+  end
+  
   def generate_token
     self.token = Devise.friendly_token[0, 30]
   end

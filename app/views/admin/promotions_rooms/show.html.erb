@@ -1,0 +1,8 @@
+<div>
+  <p><b>Start date:</b> <%= @promotion.start_date %></p>
+  <p><b>End date:</b> <%= @promotion.end_date%></p>
+  <p><b>Discount Type:</b> <%= @promotion.discount_type %></p>
+  <p><b>Discount amount:</b> <%= @promotion.discount_amount %></p>
+</div>
+
+<%= link_to 'Back', admin_room_promotions_path(@room, @promotion) %>
