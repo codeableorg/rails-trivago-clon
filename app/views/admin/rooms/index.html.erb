@@ -11,6 +11,7 @@
       <th>Number of Beds</th>
       <th>Price</th>
       <th>Hotel Name</th>
+      <th>Promotions</th>
       <th>Picture</th>
     </tr>
   </thead>
@@ -22,6 +23,13 @@
           <td><%= room.amount_of_beds %></td>
           <td>US $ <%= room.price %></td>
           <td><%= link_to room.hotel.name, admin_hotel_path(room.hotel) %></td> <!-- How to link to hotel details -->
+          <td>
+            <% if room.promotions.any? %>
+            <%= link_to 'Available', admin_room_promotions_path(room) %>
+            <% else %>
+            Unavailable
+            <% end %>
+          </td>
         </div>
         <td>
           <% if room.cover.attached? %>
