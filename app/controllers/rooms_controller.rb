@@ -1,5 +1,13 @@
 class RoomsController < ApplicationController
 
+  def index
+    if params[:search].present?
+      @rooms = Hotel.where(name: params[:search])
+    else
+      @rooms = Hotel.all
+    end
+  end
+
   def show    
     @room = Room.find(params[:id])
     @conflict_ids = []

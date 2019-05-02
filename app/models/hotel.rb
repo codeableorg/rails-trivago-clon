@@ -6,6 +6,6 @@ class Hotel < ApplicationRecord
   has_one_attached :cover
 
   def notify_users
-    BookingMailer.with(user: user, booking: ).notify_users.deliver_later
+    BookingMailer.with(user: user, booking: room_id).notify_users.deliver_later
   end
 end
