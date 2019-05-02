@@ -2,10 +2,12 @@ module Api
   class BookingsController < ApiController
     def index
       render json: Booking.all
+      authorize @bookings
     end
 
     def show
       render json: Booking.find(params[:id])
+      # authorize @booking
     end
 
     def create
@@ -16,6 +18,7 @@ module Api
         render json: { message: 'Booking not saved' }, 
                        status: :unprocessable_entity
       end
+      # authorize @booking
     end
 
     def destroy
@@ -23,6 +26,7 @@ module Api
       booking.destroy
         render json: { message: 'Booking deleted' },
                        status: :ok
+    # authorize @booking
     end
 
     def update
@@ -34,6 +38,7 @@ module Api
         render json: { message: 'Booking not updated'} , 
                        status: :unprocessable_entity
       end
+      # authorize @booking
     end
 
     private

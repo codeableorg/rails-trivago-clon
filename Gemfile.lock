@@ -221,10 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.7)
-<<<<<<< HEAD
-=======
   bcrypt
->>>>>>> 6a8b3295ec092366833f3ec18d293e761e63baa5
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)

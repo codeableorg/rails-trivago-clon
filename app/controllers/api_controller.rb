@@ -1,4 +1,9 @@
 class ApiController < ActionController::API
+  include Pundit
+  attr_reader :current_user
+  before_action :authenticate_request
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   before_action :require_login
@@ -12,7 +17,6 @@ class ApiController < ActionController::API
   end
 
   private
-
   def render_unauthorized(message)
     errors = { errors: { message: message } }
     render json: errors, status: :unauthorized
@@ -22,5 +26,14 @@ class ApiController < ActionController::API
     authenticate_with_http_token do |token, _options|
       User.find_by(token: token)
     end
+  end
+
+  def authenticate_request
+    @current_user = user
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+  end
+
+  def user_not_authorized
+    render json: { error: 'You need permission' }, status: 403
   end
 end
