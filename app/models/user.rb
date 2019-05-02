@@ -26,4 +26,5 @@ class User < ApplicationRecord
       AdminMailer.with(user: user, user_created:self).notify_admin.deliver_later
     end
   end
+
 end
