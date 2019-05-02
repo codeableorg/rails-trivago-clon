@@ -1,8 +1,14 @@
 <div>
+<<<<<<< HEAD
+  <div class="controls">
+    <%= link_to "New Room", new_admin_room_path, :class => "btn btn-new" %>
+  </div>
+=======
   <div class="controls"><%= link_to "New Room", new_admin_room_path, :class => "btn" %></div>
   <h2>List Rooms</h2>  
+>>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 </div>
-
+<h2>List Rooms</h2>
 <table>
   <thead>
     <tr>
@@ -17,14 +23,21 @@
     <% @rooms.each do |room| %>
       <tr>
         <div>
+<<<<<<< HEAD
+          <td><%= link_to room.name, admin_room_path(room) %></td>
+          <td><%= room.amount_of_beds %></td>
+          <td>US $ <%= room.price %></td>
+          <td><%= link_to room.hotel.name, admin_hotel_path(room.hotel) %></td> <!-- How to link to hotel details -->
+=======
           <td><%=link_to room.name, admin_room_path(room) %>
           <td><%= room.amount_of_beds %></td>
           <td>US $ <%= room.price %></td>
           <td><%= room.hotel.name %></td>
+>>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
         </div>
         <td>
           <% if room.cover.attached? %>
-            <%= image_tag room.cover.variant(resize: "300x300") %>
+            <%= image_tag room.cover.variant(resize: "200x200") %>
           <% end %>
         </td>
       <% end%>
