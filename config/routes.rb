@@ -14,11 +14,20 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
+  namespace :regular do
+    resources :hotels
+    resources :rooms
+    resources :bookings
+  end
+  
   resources :hotels do
     member do
       get 'rooms'
     end
-
+    
   end
+  
   resources :rooms 
+  resources :bookings
+
 end
