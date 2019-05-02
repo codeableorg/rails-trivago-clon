@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  before_destroy :notify_users
   belongs_to :user
   belongs_to :room
 
