@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    post "/login", to: 'sessions#create' 
     resources :hotels
     resources :rooms
     resources :bookings
