@@ -23,11 +23,11 @@ end
 # Add users
 #
 p "Adding 5 users and 5 admin"
-User.create(name: Faker::Name.unique.name, email: "iamdeyvi+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "iamdeyvi+admin@gmail.com", password: "123456", role: "admin")
 User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "cayala.w+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+admin@gmail.com", password: "123456", role: "admin")
-User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "cayala.w+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "cristian.granda.pastor+admin@gmail.com", password: "123456", role: "admin")
+# User.create(name: Faker::Name.unique.name, email: "ry.yrupailla+admin@gmail.com", password: "123456", role: "admin")
 user1 = User.create(name: Faker::Name.unique.name, email: "iamdeyvi+user@gmail.com", password: "123456")
 user2 = User.create(name: Faker::Name.unique.name, email: "cesarcachay1996+user@gmail.com", password: "123456")
 user3 = User.create(name: Faker::Name.unique.name, email: "cayala.w+user@gmail.com", password: "123456")
