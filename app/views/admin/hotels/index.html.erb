@@ -13,6 +13,7 @@
       <th>City</th>
       <th>Country</th>
       <th>Address</th>
+      <th>Promotions</th>
       <th>Picture</th>
     </tr>
   </thead>
@@ -25,6 +26,13 @@
         <td><%= hotel.city %></td>
         <td><%= hotel.country %></td>
         <td><%= hotel.address %></td>
+        <td>
+            <% if hotel.promotions.any? %>
+            <%= link_to 'Available', admin_hotel_promotions_path(hotel) %>
+            <% else %>
+            Unavailable
+            <% end %>
+          </td>
         <td>
           <% if hotel.cover.attached? %>
             <%= image_tag(hotel.cover.variant(resize: "200x200"), :tag => hotel.name) %>
