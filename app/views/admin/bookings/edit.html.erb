@@ -1,4 +1,6 @@
+<h2>Editing booking for room <%= @booking.room.name %> in hotel <%= @booking.room.hotel.name %></h2>
 
 <%= render 'form', hotel: @booking %>
-
-<%= link_to 'Back', admin_bookings_path %>
+<div class="controls">
+  <%= link_to "« Back", admin_bookings_path, :class => "btn btn-back" %>
+</div>

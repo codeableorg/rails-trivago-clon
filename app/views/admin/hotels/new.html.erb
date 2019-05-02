@@ -1,6 +1,7 @@
-<h1>Hotels#new</h1>
-<p>Find me in app/views/hotels/new.html.erb</p>
+<h2>New hotel</h2>
+<!--<p>Find me in app/views/hotels/new.html.erb</p> -->
 
 <%= render 'form', hotel: @hotel %>
-
-<%= link_to 'Back', admin_hotels_path %>
+<div class="controls">
+  <%= link_to "« Back", admin_hotels_path, :class => "btn btn-back" %>
+</div>
