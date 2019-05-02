@@ -11,27 +11,27 @@
 <%# Hotel name %>
   <div class="field">
     <%= f.label :name, "Hotel name: " %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => "Enter Hotel name" %>
   </div>
 <%# Hotel contact %>
   <div class="field">
     <%= f.label :email, "Hotel contact: " %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, :placeholder => "Enter hotel email" %>
   </div>
   <%# Hotel address %>
   <div class="field">
     <%= f.label :address, "Address: " %>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, :placeholder => "Enter hotel address" %>
   </div>
 <%# Hotel city %>
   <div class="field">
     <%= f.label :city, "City: " %>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :placeholder => "Enter hotel city" %>
   </div>
 <%# Hotel country %>
   <div class="field">
     <%= f.label :country, "Country: " %>
-    <%= f.text_field :country %>
+    <%= f.text_field :country, :placeholder => "Enter hotel country" %>
   </div>
   <%# Hotel images %>
   <div class="field">
@@ -40,6 +40,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Save", :class => "btn btn-new" %>
+    <%= f.submit "Save Hotel", :class => "btn btn-new" %>
   </div>
 <% end %>

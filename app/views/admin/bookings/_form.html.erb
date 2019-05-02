@@ -20,8 +20,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :paid_price, "Price: " %>
-    <%= f.number_field :paid_price %>
+    <%= f.label :paid_price, "Price: US $" %>
+    <%= f.number_field :paid_price, :placeholder => "Enter price"%>
   </div>
 
   <div class="field">
@@ -35,6 +35,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Save", :class => "btn btn-new"%>
+    <%= f.submit "Save Booking", :class => "btn btn-new"%>
   </div>
 <% end %>
