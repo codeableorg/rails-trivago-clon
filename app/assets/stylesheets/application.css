@@ -13,29 +13,29 @@
  *= require_tree .
  *= require_self
  */
-body{
+body {
   font-family: sans-serif;
   color: #333;
-  background-color: azure; 
+  background-color: azure;
   margin: 0;
   padding: 0;
 }
 
-.logo{
+.logo {
   font-size: 1.5em;
   text-align: center;
 }
 
-.logo-blue{
-  color: #027FAF; 
+.logo-blue {
+  color: #027faf;
 }
 
-.logo-yellow{
-  color: #F49027; 
+.logo-yellow {
+  color: #f49027;
 }
 
-.logo-red{
-  color: #C94A38; 
+.logo-red {
+  color: #c94a38;
 }
 
 .logo-grey {
@@ -54,12 +54,12 @@ body{
 
 .login a {
   text-decoration: none;
-  color: #027FAF;
+  color: #027faf;
 }
 
 .login a:hover {
   text-decoration: underline;
-  background-color: #F49027;
+  background-color: #f49027;
 }
 
 nav {
@@ -111,20 +111,32 @@ nav li a:hover {
   text-align: right;
   margin: 15px 0;
 }
-
+/* Buttons */
 .btn {
   padding: 8px;
   border-radius: 5px;
-  background-color: #4CBB17;
   color: #fff;
   text-decoration: none;
+  text-shadow: 1px 1px 1px #aaa;
 }
 
 .btn:hover {
-  background-color: green;
-  color: #ddd;
+  filter: contrast(200%);
 }
 
+.btn-new {
+  background-color: #4cbb17;
+}
+.btn-back {
+  background-color: blueviolet;
+}
+.btn-delete {
+  background-color: #c94a38;
+}
+.btn-edit {
+  background-color: cornflowerblue;
+}
+/* Containers */
 .piece {
   border: 1px solid #555;
   box-shadow: 2px 2px 3px #aaa;
@@ -143,7 +155,7 @@ nav li a:hover {
 
 .piece-right {
   margin-left: 20px;
-  font-size: .8em;
+  font-size: 0.8em;
   justify-content: left;
 }
 
@@ -155,7 +167,7 @@ nav li a:hover {
 .piece-right a:hover {
   text-decoration: underline;
 }
-
+/* Table */
 table {
   font-size: 0.8em;
   text-align: center;
@@ -173,9 +185,55 @@ table a {
 
 table th {
   background-color: #ccc;
+  padding: 10px 0;
 }
 
 table td {
   padding: 5px 10px;
   background-color: #ddd;
+}
+
+#error_explanation {
+  padding: 10px;
+  background-color: #f49027;
+}
+
+form {
+  background: #ddd;
+  box-shadow: 2px 2px 3px #aaa;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 0.8em;
+  color: #555;
+  display: inline-block;
+  width: 130px;
+}
+
+.field {
+  padding: 10px;
+}
+
+.field:hover {
+  background-color: #aaa;
+  border-radius: 5px;
+}
+
+form input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"] {
+  font-size: 1.1em;
+  width: 200px;
+  height: 30px;
+  border: none;
+  padding-left: 10px;
+}
+
+.actions input {
+  border-radius: 8px;
+  border: none;
 }
