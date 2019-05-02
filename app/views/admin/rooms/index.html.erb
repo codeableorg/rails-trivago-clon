@@ -27,7 +27,7 @@
             <% if room.promotions.any? %>
             <%= link_to 'Available', admin_room_promotions_path(room) %>
             <% else %>
-            Unavailable
+            <%= link_to 'Unavailable', admin_room_promotions_path(room) %>
             <% end %>
           </td>
         </div>
