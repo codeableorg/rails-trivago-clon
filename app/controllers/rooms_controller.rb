@@ -2,9 +2,9 @@ class RoomsController < ApplicationController
 
   def index
     if params[:search].present?
-      @rooms = Hotel.where(name: params[:search])
+      @rooms = Room.where(name: params[:search])
     else
-      @rooms = Hotel.all
+      @rooms = Room.all
     end
   end
 
