@@ -3,8 +3,15 @@
     <%= text_field_tag(:search, params[:search]) %>
     <%= submit_tag('Search', :name => nil) %>
 <% end %>
-<ul>
+
 <% @rooms.each do |room| %>
-  <li><%= link_to room.name, controller: "rooms", action: "show", id: room  %></li>
-<% end %>
-</ul>
+<div class="piece">
+  <%= image_tag(room.cover.variant(resize: "200x200"), :alt => room.name) %>
+  <div class="piece-right">
+    <h2><%= link_to room.name, room_path(room) %></h2>
+    <p><b>Amount of beds: </b> <%= room.amount_of_beds %></p>
+    <p><b>Price: </b> <%= room.price %></p>
+    <p><b>Hotel:</b> <%= room.hotel.name %></p>
+  </div>
+</div>
+<% end%>
