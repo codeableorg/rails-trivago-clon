@@ -215,6 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.7)
+  bcrypt
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)

@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('logo-ico.png') %>
   </head>
 
   <body>
@@ -24,7 +25,11 @@
         <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
       <% end %>
     </div>
-    <%= render '/partials/nav' %>
+    <% if current_user && current_user.role == "admin" %>
+      <%= render '/partials/nav_admin' %>
+    <% else  %>
+      <%= render '/partials/nav_regular' %>
+    <% end  %>
     <div class="placeholder-logo"><h2><span class="logo-blue">tri</span><span class="logo-yellow">va</span><span  class="logo-red">go</span><span class="logo-grey">-clone</span></h2></div>
     <%= yield %>
     </div>
