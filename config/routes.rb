@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'home#index'
     resources :hotels
-    resources :rooms
+    resources :rooms do
+      resources :promotions, controller: 'promotions_rooms'
+    end
     resources :bookings
   end
 
