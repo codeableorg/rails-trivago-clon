@@ -56,3 +56,5 @@ The app should expose an API in `/api` to recreate the public website.
 - Errors should be displayed to the users with understandable messages
 - Non optional features are required
 - Project lead must ask doubts about the features
+
+🥑 Test Unicode Branch 
