@@ -16,11 +16,7 @@
 body {
   font-family: sans-serif;
   color: #333;
-<<<<<<< HEAD
   background-color: azure;
-=======
-  background-color: azure; 
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
   margin: 0;
   padding: 0;
 }
@@ -82,12 +78,12 @@ body {
 
 .login a {
   text-decoration: none;
-  color: #027FAF;
+  color: #027faf;
 }
 
 .login a:hover {
   text-decoration: underline;
-  background-color: #F49027;
+  background-color: #f49027;
 }
 
 nav {
@@ -139,7 +135,6 @@ nav li a:hover {
   text-align: right;
   margin: 15px 0;
 }
-<<<<<<< HEAD
 /* Buttons */
 .btn {
   padding: 8px;
@@ -166,22 +161,6 @@ nav li a:hover {
   background-color: cornflowerblue;
 }
 /* Containers */
-=======
-
-.btn {
-  padding: 8px;
-  border-radius: 5px;
-  background-color: #4CBB17;
-  color: #fff;
-  text-decoration: none;
-}
-
-.btn:hover {
-  background-color: green;
-  color: #ddd;
-}
-
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 .piece {
   border: 1px solid #555;
   box-shadow: 2px 2px 3px #aaa;
@@ -200,31 +179,18 @@ nav li a:hover {
 
 .piece-right {
   margin-left: 20px;
-<<<<<<< HEAD
   font-size: 0.8em;
-=======
-  font-size: .8em;
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
   justify-content: left;
 }
 
 .piece-right a {
   text-decoration: none;
-<<<<<<< HEAD
   color: #027faf;
-=======
-  color: #027FAF;
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 }
 
 .piece-right a:hover {
   text-decoration: underline;
 }
-<<<<<<< HEAD
-/* Table */
-=======
-
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 table {
   font-size: 0.8em;
   text-align: center;
@@ -237,25 +203,17 @@ table img {
 
 table a {
   text-decoration: none;
-<<<<<<< HEAD
   color: #027faf;
-=======
-  color: #027FAF;
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 }
 
 table th {
   background-color: #ccc;
-<<<<<<< HEAD
   padding: 10px 0;
-=======
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
 }
 
 table td {
   padding: 5px 10px;
   background-color: #ddd;
-<<<<<<< HEAD
 }
 
 #error_explanation {
@@ -288,7 +246,9 @@ form label {
 }
 
 form input[type="text"],
-input[type="email"], input[type="number"], input[type="date"] {
+input[type="email"],
+input[type="number"],
+input[type="date"] {
   font-size: 1.1em;
   width: 200px;
   height: 30px;
@@ -300,6 +260,3 @@ input[type="email"], input[type="number"], input[type="date"] {
   border-radius: 8px;
   border: none;
 }
-=======
-}
->>>>>>> 8bd2ea5f0c0f3d0fa6be01233479bbac3d9d2243
