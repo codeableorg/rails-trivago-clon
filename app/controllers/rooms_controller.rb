@@ -11,10 +11,17 @@ class RoomsController < ApplicationController
   def show    
     @room = Room.find(params[:id])
     @conflict_ids = []
+    @bookings = @room.bookings 
     @error = ''
+  end
+
+
+  def book 
     if params[:min_date].present? && params[:max_date].present?
 
-      @bookings = @room.bookings
+      @room = Room.find(params[:id])
+      @bookings = @room.bookings 
+
       @conflict_ids = @bookings.where(
         [
           '(start_date <= :min_date AND end_date >= :max_date)',
@@ -26,10 +33,16 @@ class RoomsController < ApplicationController
           max_date: params[:max_date]
         }  
       ).ids
-
-    else
-      @bookings = @room.bookings     
-    end
-    
+      
+      if @conflict_ids.none?
+        current_user.bookings.create( 
+          start_date: params[:min_date], 
+          end_date: params[:max_date], 
+          paid_price: @room.price, 
+          room_id: @room.id 
+        )            
+      end
+      redirect_to action: 'show'
+    end  
   end
 end

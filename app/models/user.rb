@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  
   # has_secure_password
   # Not needed, devise give us this :eye
 
@@ -19,8 +19,8 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  after_create :send_welcome_email, :send_registration_mail
-
+  # after_create :send_welcome_email, :send_registration_mail
+  before_create :generate_token
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook github]
@@ -48,6 +48,10 @@ class User < ApplicationRecord
 
   def admin? 
     self.role == "admin"
+  end
+  
+  def generate_token
+    self.token = Devise.friendly_token[0, 30]
   end
 
 end

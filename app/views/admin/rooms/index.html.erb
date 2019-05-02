@@ -1,8 +1,9 @@
 <div>
-  <div class="controls"><%= link_to "New Room", new_admin_room_path, :class => "btn" %></div>
-  <h2>List Rooms</h2>  
+  <div class="controls">
+    <%= link_to "New Room", new_admin_room_path, :class => "btn btn-new" %>
+  </div>
 </div>
-
+<h2>List Rooms</h2>
 <table>
   <thead>
     <tr>
@@ -17,14 +18,14 @@
     <% @rooms.each do |room| %>
       <tr>
         <div>
-          <td><%=link_to room.name, admin_room_path(room) %>
+          <td><%= link_to room.name, admin_room_path(room) %></td>
           <td><%= room.amount_of_beds %></td>
           <td>US $ <%= room.price %></td>
-          <td><%= room.hotel.name %></td>
+          <td><%= link_to room.hotel.name, admin_hotel_path(room.hotel) %></td> <!-- How to link to hotel details -->
         </div>
         <td>
           <% if room.cover.attached? %>
-            <%= image_tag room.cover.variant(resize: "300x300") %>
+            <%= image_tag room.cover.variant(resize: "200x200") %>
           <% end %>
         </td>
       <% end%>
