@@ -10,29 +10,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name, "Room name: " %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :amount_of_beds %>
+    <%= f.label :amount_of_beds, "Amount of beds: " %>
     <%= f.number_field :amount_of_beds %>
   </div>
 
   <div class="field">
-    <%= f.label :price %>
+    <%= f.label :price, "Price: " %>
     <%= f.number_field :price %>
   </div>
 
-  <p>Hotel</p>
-  <%= f.collection_select(:hotel_id, Hotel.all, :id, :name) %>
+  <p>Hotel: <%= f.collection_select(:hotel_id, Hotel.all, :id, :name) %></p>
 
-  <p>
-    <%= f.label :cover %><br />
+  <div class="field">
+    <%= f.label :cover %>
     <%= f.file_field :cover %>
-  </p>
+  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", :class => "btn btn-new" %>
   </div>
 <% end %>

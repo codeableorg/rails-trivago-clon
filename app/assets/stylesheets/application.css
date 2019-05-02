@@ -111,20 +111,32 @@ nav li a:hover {
   text-align: right;
   margin: 15px 0;
 }
-
+/* Buttons */
 .btn {
   padding: 8px;
   border-radius: 5px;
-  background-color: #4CBB17;
   color: #fff;
   text-decoration: none;
+  text-shadow: 1px 1px 1px #aaa;
 }
 
 .btn:hover {
-  background-color: green;
-  color: #ddd;
+  filter: contrast(200%);
 }
 
+.btn-new {
+  background-color: #4CBB17;
+}
+.btn-back {
+  background-color: blueviolet;
+}
+.btn-delete {
+  background-color: #C94A38;
+}
+.btn-edit {
+  background-color: cornflowerblue;
+}
+/* Containers */
 .piece {
   border: 1px solid #555;
   box-shadow: 2px 2px 3px #aaa;
@@ -155,7 +167,7 @@ nav li a:hover {
 .piece-right a:hover {
   text-decoration: underline;
 }
-
+/* Table */
 table {
   font-size: 0.8em;
   text-align: center;
@@ -173,9 +185,45 @@ table a {
 
 table th {
   background-color: #ccc;
+  padding: 10px 0;
 }
 
 table td {
   padding: 5px 10px;
   background-color: #ddd;
+}
+
+#error_explanation {
+  padding: 10px;
+  background-color: #F49027;
+}
+
+form {
+  background: #aaa;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.field {
+  padding: 10px;
+}
+
+form input {
+  /* font-size: 1.2em; */
+}
+
+
+.actions input {
+  /* background-color: #4CBB17; */
+  border-radius: 8px;
+  /* padding: 8px; */
+  /* color: #333; */
+  /* text-shadow: 1px 1px 1px #ccc; */
+  /* font-size: 1em; */
+  border: none; 
 }
