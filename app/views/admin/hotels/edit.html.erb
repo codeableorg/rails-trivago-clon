@@ -1,0 +1,7 @@
+<h2>Editing hotel <%= @hotel.name %></h2>
+<!--<p>Find me in app/views/hotels/edit.html.erb</p>-->
+
+<%= render 'form', hotel: @hotel %>
+<div class="controls">
+  <%= link_to "« Back", admin_hotels_path, :class => "btn btn-back" %>
+</div>

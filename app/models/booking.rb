@@ -1,5 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  belongs_to :hotel
+
+  def notify_users
+    BookingMailer.with(user: user, booking: self).notify_users.deliver_later
+  end  
 end

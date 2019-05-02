@@ -1,0 +1,44 @@
+
+<div>
+  <div class="controls">
+    <%= link_to "New Hotel", new_admin_hotel_path, class: "btn btn-new" %>
+  </div>
+</div>
+<h2>List Hotels</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Hotel Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Promotions</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hotels.each do |hotel| %>
+      <tr>
+        <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
+        <td><%= mail_to hotel.email, "Contact" %></td>
+        <%#<td><%= hotel.email %><%#</td> %>
+        <td><%= hotel.city %></td>
+        <td><%= hotel.country %></td>
+        <td><%= hotel.address %></td>
+        <td>
+            <% if hotel.promotions.any? %>
+            <%= link_to 'Available', admin_hotel_promotions_path(hotel) %>
+            <% else %>
+            <%= link_to 'Unavailable', admin_room_promotions_path(room) %>
+            <% end %>
+          </td>
+        <td>
+          <% if hotel.cover.attached? %>
+            <%= image_tag(hotel.cover.variant(resize: "200x200"), :tag => hotel.name) %>
+          <% end %>
+        </td>
+      <% end%>
+      </tr>  
+  </tbody>
+</table>

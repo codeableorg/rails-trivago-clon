@@ -1,2 +1,10 @@
-<h1>Hotels#index</h1>
-<p>Find me in app/views/hotels/index.html.erb</p>
+<h2>Hotels#index</h2>
+<%= form_tag(hotels_path, {:method => 'get'}) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag('Search', :name => nil) %>
+<% end %>
+<ul>
+<% @hotels.each do |hotel| %>
+  <li><%= link_to hotel.name, controller: "hotels", action: "show", id: hotel  %></li>
+<% end %>
+</ul>

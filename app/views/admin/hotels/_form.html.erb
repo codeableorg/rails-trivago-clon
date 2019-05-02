@@ -1,0 +1,45 @@
+<%= form_for [:admin, @hotel] do |f| %>
+  <% if @hotel.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @hotel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%# Hotel name %>
+  <div class="field">
+    <%= f.label :name, "Hotel name: " %>
+    <%= f.text_field :name, :placeholder => "Enter Hotel name" %>
+  </div>
+<%# Hotel contact %>
+  <div class="field">
+    <%= f.label :email, "Hotel contact: " %>
+    <%= f.email_field :email, :placeholder => "Enter hotel email" %>
+  </div>
+  <%# Hotel address %>
+  <div class="field">
+    <%= f.label :address, "Address: " %>
+    <%= f.text_field :address, :placeholder => "Enter hotel address" %>
+  </div>
+<%# Hotel city %>
+  <div class="field">
+    <%= f.label :city, "City: " %>
+    <%= f.text_field :city, :placeholder => "Enter hotel city" %>
+  </div>
+<%# Hotel country %>
+  <div class="field">
+    <%= f.label :country, "Country: " %>
+    <%= f.text_field :country, :placeholder => "Enter hotel country" %>
+  </div>
+  <%# Hotel images %>
+  <div class="field">
+    <%= f.label :cover, "Pictures: " %>
+    <%= f.file_field :cover, :class => "btn" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save Hotel", :class => "btn btn-new" %>
+  </div>
+<% end %>
