@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
   namespace :admin do
     root 'home#index'
-    resources :hotels
-    resources :rooms
+    resources :hotels do
+      resources :promotions, controller: 'promotions_hotels'
+    end
+    resources :rooms do
+      resources :promotions, controller: 'promotions_rooms'
+    end
     resources :bookings
   end
   namespace :api do
