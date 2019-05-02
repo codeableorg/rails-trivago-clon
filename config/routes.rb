@@ -21,9 +21,14 @@ Rails.application.routes.draw do
   resources :hotels do
     member do
       get 'rooms'
-    end
-    
+    end    
   end
-  resources :rooms 
+
+  resources :rooms  do
+    member do
+      post 'book'
+    end
+  end
+
   resources :bookings
 end
