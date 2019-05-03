@@ -35,7 +35,9 @@
           </td>
         <td>
           <% if hotel.cover.attached? %>
-            <%= image_tag(hotel.cover.variant(resize: "200x200"), :tag => hotel.name) %>
+            <% hotel.cover.each do |image| %>
+              <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+            <% end %>
           <% end %>
         </td>
       <% end%>

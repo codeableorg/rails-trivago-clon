@@ -6,7 +6,9 @@
 <h2>Your Bookings</h2>
 <% @bookings.each do |booking| %>
   <div class="piece">
-    <%= image_tag(booking.room.hotel.cover.variant(resize: "200x200"), :alt => booking.room.hotel.name) %>
+    <% booking.room.hotel.cover.each do |image| %>
+      <%= image_tag(image.variant(resize: "200x200"), :alt => booking.room.hotel.name) %>
+    <% end %>
     <div class="piece-right">
       <h2><%= booking.room.hotel.name %></h2>
       <p><b>Room name:</b> <%= booking.room.name %></p>
