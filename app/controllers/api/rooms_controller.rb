@@ -141,7 +141,7 @@ class Api::RoomsController < ApiController
   end
 
   def authorization_method
-    authorize [:api, Room]
+    authorize Room
   end
 
 end

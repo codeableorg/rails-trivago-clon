@@ -1,5 +1,5 @@
 class Api::HotelsController < ApiController
-  
+  before_action :authorization_method
   def index
     render json: Hotel.all
   end
@@ -39,5 +39,9 @@ class Api::HotelsController < ApiController
   private
   def hotel_params
     params.permit(:name,:email,:city,:country,:address)
+  end
+
+  def authorization_method
+    authorize Hotel
   end
 end
