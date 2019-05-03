@@ -3,7 +3,9 @@
 </div>
 <% @bookings.each do |booking| %>
 <div class="piece">
-  <%= image_tag(booking.room.hotel.cover.variant(resize: "200x200"), :alt => booking.room.hotel.name) %>
+  <% booking.room.hotel.cover.each do |image| %>
+    <%= image_tag(image.variant(resize: "200x200"), :alt => booking.room.hotel.name) %>
+  <% end %>
   <div class="piece-right">
     <h2><%= link_to booking.room.hotel.name, booking_path(booking) %></h2>
     <%# <h2><%= link_to booking.id, booking_path(booking) %><%#</h2> %>

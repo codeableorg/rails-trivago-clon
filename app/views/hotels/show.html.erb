@@ -2,7 +2,9 @@
   <div>
     <h2><%= @hotel.name %></h2>
     <% if @hotel.cover.attached? %>
-      <%= image_tag @hotel.cover.variant(resize: "200x200") %>
+      <% @hotel.cover.each do |image| %>
+        <%= image_tag image.variant(resize: "200x200") %>
+      <% end %>
     <% end %>
   </div>
   <div class="piece-right">
