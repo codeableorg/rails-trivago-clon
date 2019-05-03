@@ -1,12 +1,20 @@
 <h2>Rooms Search</h2>
 <%= form_tag(rooms_path, {:method => 'get'}) do %>
     <%= text_field_tag(:search, params[:search]) %>
-    <%= submit_tag('Search', :name => nil) %>
+    <%= submit_tag('Search', :name => nil) %> <br><br>
+    price
+    <%= text_field_tag(:min_price, params[:min_price]) %>
+    <%= text_field_tag(:max_price, params[:max_price]) %> <br> <br>
+    beds
+    <%= text_field_tag(:min_beds, params[:min_beds]) %>
+    <%= text_field_tag(:max_beds, params[:max_beds]) %>
 <% end %>
 
 <% @rooms.each do |room| %>
 <div class="piece">
-  <%= image_tag(room.cover.variant(resize: "200x200"), :alt => room.name) %>
+  <% if room.cover.attached? %>
+    <%= image_tag(room.cover.variant(resize: "200x200"), :alt => room.name) %>
+  <% end %>
   <div class="piece-right">
     <h2><%= link_to room.name, room_path(room) %></h2>
     <p><b>Amount of beds: </b> <%= room.amount_of_beds %></p>
