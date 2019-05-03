@@ -8,6 +8,7 @@ module Api
     end
 
     def show
+      
       authorize @booking
       render json: @booking
     end
