@@ -1,4 +1,5 @@
 class ApiController < ActionController::API
+  
   include Pundit
   attr_reader :current_user
   before_action :authenticate_request
@@ -6,7 +7,9 @@ class ApiController < ActionController::API
 
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  # before_action :require_login
+  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
+  before_action :require_login
 
   def require_login
     authenticate_token || render_unauthorized('Access denied')

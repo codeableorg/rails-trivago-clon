@@ -79,3 +79,4 @@ promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_
 
 promotion4 = room1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "fixed", discount_amount: 60)
 promotion5 = room1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "percentage", discount_amount: 60)
+promotion6 = hotel1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "percentage", discount_amount: 60)

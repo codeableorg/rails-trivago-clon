@@ -1,36 +1,28 @@
-
 class BookingPolicy < ApplicationPolicy
 
   attr_reader :user, :booking
 
-  def initialize(user, booking)
-    @user = user
-    @booking = booking
-  end
-
   def index?
-    true
+    @user&.regular?
   end
 
   def create?
-    user.present?
+    @user&.regular?
   end
 
   def edit?
-    (user.present? && user.admin?) || (user.present? && @booking.user_id == user.id)
+    (@user.present? && @user.admin?) || (@user.present? && @booking.user_id == @user.id)
   end
 
   def update?
-    (user.present? && user.admin?) || (user.present? && @booking.user_id == user.id)
+    (@user.present? && @user.admin?) || (@user.present? && @booking.user_id == @user.id)
   end
 
   def destroy?
-    user.admin? || @booking.user.id == user.id
+    @user.admin? || @booking.user.id == @user.id
   end
 
-  private
- 
-    def booking
-      record
-    end
+  def show?
+    @user&.regular?
+  end
 end

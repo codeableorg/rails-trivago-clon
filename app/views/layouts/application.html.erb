@@ -17,7 +17,7 @@
 
     <div class="login">
       <% if current_user %>
-        You are user<strong><%= current_user.email %></strong>! | 
+        You are user <strong><%= current_user.email %></strong>! | 
         <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Iniciar sesión', new_user_session_path %> | 
