@@ -32,4 +32,5 @@ class BookingMailer < ApplicationMailer
     @hotel = params[:hotel]
     mail(to: @user.email, subject: "Your reservation is for tomorrow!" )
   end
+
 end

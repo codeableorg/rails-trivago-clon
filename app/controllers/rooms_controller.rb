@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authorization_method
 
   def index
 
@@ -25,7 +26,7 @@ class RoomsController < ApplicationController
 
   end
 
-  def show    
+  def show  
     @room = Room.find(params[:id])
     @conflict_ids = []
     @bookings = @room.bookings 
@@ -33,7 +34,7 @@ class RoomsController < ApplicationController
   end
 
 
-  def book 
+  def book     
     if params[:min_date].present? && params[:max_date].present?
 
       @room = Room.find(params[:id])
@@ -104,6 +105,10 @@ class RoomsController < ApplicationController
     end
 
     hotel_discount + room_discount
+  end
+
+  def authorization_method
+    authorize Room
   end
 
 end

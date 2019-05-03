@@ -23,4 +23,5 @@ class Booking < ApplicationRecord
   def reservation_tomorrow
     SendReminderNotificationJob.set(wait_until: ((self.start_date - 1.day)- DateTime.now).to_s).perform_later(self)
   end
+
 end
