@@ -1,9 +1,11 @@
 class ApiController < ActionController::API
 
   include Pundit
-
+  
   include ActionController::HttpAuthentication::Token::ControllerMethods
+
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
   before_action :require_login
 
   def require_login

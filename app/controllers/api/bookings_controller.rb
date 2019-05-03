@@ -1,14 +1,12 @@
 module Api
   class BookingsController < ApiController
-
     before_action :set_booking, only: [:show, :update, :destroy]
     def index
       authorize Booking
       render json: Booking.all
     end
 
-    def show
-      
+    def show 
       authorize @booking
       render json: @booking
     end

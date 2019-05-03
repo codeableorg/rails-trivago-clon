@@ -1,12 +1,20 @@
 <h2>Rooms Search</h2>
 <%= form_tag(rooms_path, {:method => 'get'}) do %>
     <%= text_field_tag(:search, params[:search]) %>
-    <%= submit_tag('Search', :name => nil) %>
+    <%= submit_tag('Search', :name => nil) %> <br><br>
+    price
+    <%= text_field_tag(:min_price, params[:min_price]) %>
+    <%= text_field_tag(:max_price, params[:max_price]) %> <br> <br>
+    beds
+    <%= text_field_tag(:min_beds, params[:min_beds]) %>
+    <%= text_field_tag(:max_beds, params[:max_beds]) %>
 <% end %>
 
 <% @rooms.each do |room| %>
 <div class="piece">
-  <%= image_tag(room.cover.variant(resize: "200x200"), :alt => room.name) %>
+  <% if room.cover.attached? %>
+    <%= image_tag(room.cover.variant(resize: "200x200"), :alt => room.name) %>
+  <% end %>
   <div class="piece-right">
     <h2><%= link_to room.name, room_path(room) %></h2>
     <p><b>Amount of beds: </b> <%= room.amount_of_beds %></p>
@@ -21,6 +29,17 @@
           <li><p>End Date: <%= room_promotion.end_date %></p></li>
           <li><p>Type: <%= room_promotion.discount_type.capitalize %></p></li>
           <li><p>Amount: <%= room_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+
+    <p><b>Hotel Promotions:</b></p>
+      <% @room.hotel.promotions.each do |hotel_promotion| %>
+        <ul>
+        <p><b>Promotion <%= hotel_promotion.id %></b></p>
+          <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>
+          <li><p>End Date: <%= hotel_promotion.end_date %></p></li>
+          <li><p>Type: <%= hotel_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
         </ul>
       <% end %>
   </div>
