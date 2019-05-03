@@ -1,27 +1,27 @@
-class Api::RoomPolicy < ApplicationPolicy
+class Admin::RoomPolicy < ApplicationPolicy
 
   attr_reader :user, :room
 
   def index?
-    true
+    @user&.admin?
+  end
+
+  def new?
+    @user&.admin?
   end
 
   def show?
-    true
-  end
+    @user&.admin?
+  end 
 
-  def book?
-    @user&.regular?
+  def edit?
+    @user&.admin?
   end
  
   def create?
     @user&.admin?
   end
 
-  def edit?
-    @user&.admin?
-  end
- 
   def update?
     @user&.admin?
   end
