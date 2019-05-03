@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :authorization_method
 
   def index 
     if params[:search].present?
@@ -55,6 +56,10 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :paid_price, :user_id, :room_id)
+  end
+
+  def authorization_method
+    authorize Booking
   end
 
 end

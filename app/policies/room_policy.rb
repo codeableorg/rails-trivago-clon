@@ -2,39 +2,32 @@ class RoomPolicy < ApplicationPolicy
 
   attr_reader :user, :room
 
-  def initialize(user, room)
-    @user = user
-    @room = room
+  def index?
+    true
   end
 
-  def index?
-    return true if user.admin?
+  def show?
+    true
   end
 
   def book?
-    return true if user.admin?
-    @user.&
+    @user&.regular?
   end
  
   def create?
-    return true if user.admin?
+    @user&.admin?
   end
 
   def edit?
-    return true if user.admin?
+    @user&.admin?
   end
  
   def update?
-    return true if user.admin?
+    @user&.admin?
   end
  
   def destroy?
-    return true if user.admin?
+    @user&.admin?
   end
  
-  private
- 
-    def article
-      record
-    end
 end
