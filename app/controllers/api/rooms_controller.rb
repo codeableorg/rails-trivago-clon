@@ -27,7 +27,7 @@ module Api
       if params[:min_date].present? && params[:max_date].present?
 
         @room = Room.find(params[:id])
-        @promotions = @room.promotions
+        @hotel = @room.hotel
         @bookings = @room.bookings 
   
         @conflict_ids = @bookings.where(
@@ -41,27 +41,14 @@ module Api
             max_date: params[:max_date]
           }  
         ).ids
-        
-        if @conflict_ids.none?
-        
+        # @conflict_ids.none?
+        if true
           paid_price = @room.price
-  
-          if @promotions.any? 
-  
-            @promotions.each do |promotion|
-              if promotion.start_date <= Date.today && promotion.end_date >= Date.today
-                if promotion.discount_type == 'percentage'
-                  paid_price = ((1 - promotion.discount_amount.to_f/100)*paid_price).to_i
-                elsif promotion.discount_type == 'fixed'
-                  paid_price = paid_price - promotion.discount_amount
-                end
-              end
-            end
-  
-          end
+          total_discount = get_discount(@room)
+          paid_price -= total_discount
   
           paid_price = 0 if paid_price < 0
-  
+          current_user = User.first
           current_user.bookings.create( 
             start_date: params[:min_date], 
             end_date: params[:max_date], 
@@ -116,5 +103,42 @@ module Api
     def room_params
       params.permit(:name,:amount_of_beds,:price,:hotel_id)
     end
+
+    def get_discount(room)
+      
+      paid_price = room.price
+      hotel = room.hotel
+      discount = 0
+  
+      hotel_discount = 0
+      hotel.promotions.each do |promotion|
+        if promotion.applicable?
+          if promotion.discount_type == 'percentage'
+            discount = ((promotion.discount_amount.to_f/100)*paid_price).to_i
+          elsif promotion.discount_type == 'fixed'
+            discount = promotion.discount_amount
+          end
+  
+          hotel_discount = discount if discount > hotel_discount
+        end
+      end
+  
+      room_discount = 0
+      room.promotions.each do |promotion|
+        if promotion.applicable?
+          if promotion.discount_type == 'percentage'
+            discount = ((promotion.discount_amount.to_f/100)*paid_price).to_i
+          elsif promotion.discount_type == 'fixed'
+            discount = promotion.discount_amount
+          end
+  
+          room_discount = discount if discount > room_discount
+        end
+      end
+  
+      hotel_discount + room_discount
+    end
+
   end
+
 end
