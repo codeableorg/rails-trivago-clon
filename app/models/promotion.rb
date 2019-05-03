@@ -1,5 +1,5 @@
 class Promotion < ApplicationRecord
-  belongs_to :promotionable, polymorphic: true}
+  belongs_to :promotionable, polymorphic: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :discount_type, presence: true

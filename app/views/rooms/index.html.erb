@@ -33,7 +33,7 @@
       <% end %>
 
     <p><b>Hotel Promotions:</b></p>
-      <% @room.hotel.promotions.each do |hotel_promotion| %>
+      <% room.hotel.promotions.each do |hotel_promotion| %>
         <ul>
         <p><b>Promotion <%= hotel_promotion.id %></b></p>
           <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>

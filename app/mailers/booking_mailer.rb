@@ -25,4 +25,11 @@ class BookingMailer < ApplicationMailer
     @hotel = params[:hotel]
     mail(to: @user.email, subject: "Unfortunately your booking has been deleted" )
   end
+
+  def day_before_booking
+    @user = params[:user]
+    @booking = params[:booking]
+    @hotel = params[:hotel]
+    mail(to: @user.email, subject: "Your reservation is for tomorrow!" )
+  end
 end
