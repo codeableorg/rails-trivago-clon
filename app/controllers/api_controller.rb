@@ -1,4 +1,6 @@
 class ApiController < ActionController::API
+  include Pundit
+  
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   # before_action :require_login
