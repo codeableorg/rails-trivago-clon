@@ -1,5 +1,6 @@
 module Api
   class HotelsController < ApiController
+    
     def index
       render json: Hotel.all
     end

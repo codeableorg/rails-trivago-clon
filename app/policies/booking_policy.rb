@@ -28,6 +28,10 @@ class BookingPolicy < ApplicationPolicy
     user.admin? || @booking.user.id == user.id
   end
 
+  def show?
+    user.admin?
+  end
+
   private
  
     def booking
