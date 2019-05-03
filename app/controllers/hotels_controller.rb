@@ -1,4 +1,6 @@
 class HotelsController < ApplicationController
+  before_action :authorization_method
+
   def index
     if params[:search].present?
       @hotels = Hotel.where(name: params[:search])
@@ -9,12 +11,6 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
-  end
-
-  def new
-  end
-
-  def edit
   end
 
   def rooms
@@ -36,6 +32,10 @@ class HotelsController < ApplicationController
       )
     end
 
+  end
+
+  def authorization_method
+    authorize Hotel
   end
 
 end
