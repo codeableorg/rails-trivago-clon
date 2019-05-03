@@ -7,7 +7,9 @@
 <% @hotels.each do |hotel| %>
   <div class="piece">
     <% if hotel.cover.attached? %>
-    <%= image_tag(hotel.cover.variant(resize: "200x200"), :alt => hotel.name) %>
+      <% hotel.cover.each do |image| %>
+        <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+      <% end %>
     <% end %>
     <div class="piece-right">
       <h2><%= link_to hotel.name, rooms_hotel_path(hotel) %></h2>

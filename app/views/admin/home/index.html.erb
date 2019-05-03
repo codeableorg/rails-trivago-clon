@@ -3,7 +3,9 @@
 <h2>Most Popular Hotels👍</h2>
 <% @popularhotels.each do |hotel| %>
   <div class="piece">
-    <%= image_tag(hotel.cover.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% hotel.cover.each do |image| %>
+      <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% end %>
     <div class="piece-right">
       <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
       <p><b>Contact Hotel: </b> <%= mail_to hotel.email, hotel.email %></p>
@@ -28,7 +30,9 @@
 <h2>Less Popular Hotels👎</h2>
 <% @lesspopularhotels.each do |hotel| %>
   <div class="piece">
-    <%= image_tag(hotel.cover.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% hotel.cover.each do |image| %>
+      <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% end %>
     <div class="piece-right">
       <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
       <p><b>Contact Hotel: </b> <%= mail_to hotel.email, hotel.email %></p>
