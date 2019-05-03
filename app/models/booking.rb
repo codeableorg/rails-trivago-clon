@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   end  
 
   def send_confirmation
-    BookingMailer.with(user: user, booking: self).booking_confirmation.deliver_later
+    BookingMailer.with(user: user, booking: self).booking_confirmation.deliver_now
   end
 
   def notify_booking

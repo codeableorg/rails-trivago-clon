@@ -1,11 +1,3 @@
-  # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-#
 require 'faker'
 
 p "Seeding DB"
@@ -58,23 +50,24 @@ room10 = hotel5.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4),
 
 # Add 3 bookings
 # Check relation booking with room and user
-p "Adding 3 bookings"
-book1 = user1.bookings.create!(start_date: Date.today, end_date: Date.today + 1.days, paid_price: room1.price, room_id: 1)
-user1.bookings.create!(start_date: Date.today + 3, end_date: Date.today + 5.days, paid_price: room1.price, room_id: 1)
-# book1.rooms << room1
-book2 = user2.bookings.create!(start_date: Date.parse("April 10 2018"), end_date: Date.parse("April 15 2018"), paid_price: room4.price, room_id: 4)
-# book2.rooms << room4
-book3 = user5.bookings.create!(start_date: Date.parse("October 23 2018"), end_date: Date.parse("October 23 2018"), paid_price: room6.price, room_id: 6)
-# book3.rooms << room6
+# p "Adding 3 bookings"
+# book1 = user1.bookings.create!(start_date: Date.parse("November 10 2020"), end_date: Date.parse("November 11 2020"), paid_price: room1.price, room_id: 1)
+
+# user1.bookings.create!(start_date: Date.parse("December 10 2020"), end_date: Date.parse("December 11 2020"), paid_price: room1.price, room_id: 1)
+# # book1.rooms << room1
+# book2 = user2.bookings.create!(start_date: Date.parse("April 10 2019"), end_date: Date.parse("April 15 2019"), paid_price: room4.price, room_id: 4)
+# # book2.rooms << room4
+# book3 = user5.bookings.create!(start_date: Date.parse("October 23 2019"), end_date: Date.parse("October 23 2019"), paid_price: room6.price, room_id: 6)
+# # book3.rooms << room6
 
 # Add promotions
 p "Adding 4 promotions"
 # Check relation promotion with room and hotel
-promotion1 = hotel1.promotions.create(start_date: Date.parse("January 15 2019"), end_date: Date.parse("April 15 2019"), discount_type: "percentage", discount_amount: 5)
+promotion1 = hotel1.promotions.create(start_date: Date.parse("January 15 2020"), end_date: Date.parse("April 15 2020"), discount_type: "percentage", discount_amount: 5)
 # promotion1.hotel << hotel1
-promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"), end_date: Date.parse("February 17 2019"), discount_type: "fixed", discount_amount: 30)
+promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2020"), end_date: Date.parse("February 17 2020"), discount_type: "fixed", discount_amount: 30)
 # promotion2.room << room3
-promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "percentage", discount_amount: 9)
+promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2020"), end_date: Date.parse("June 15 2020"), discount_type: "percentage", discount_amount: 9)
 # promotion1.room << room5
 
 promotion4 = room1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "fixed", discount_amount: 60)
