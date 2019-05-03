@@ -1,8 +1,12 @@
 <h2>Rooms</h2>
 
 <%= form_tag(rooms_hotel_path(params[:id]), {:method => 'get'}) do %>
+    price
     <%= text_field_tag(:min_price, params[:min_price]) %>
-    <%= text_field_tag(:max_price, params[:max_price]) %>
+    <%= text_field_tag(:max_price, params[:max_price]) %> <br> <br>
+    beds
+    <%= text_field_tag(:min_beds, params[:min_beds]) %>
+    <%= text_field_tag(:max_beds, params[:max_beds]) %>
     <%= submit_tag('Search', :name => nil) %>
 <% end %>
 
