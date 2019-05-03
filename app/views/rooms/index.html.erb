@@ -12,6 +12,17 @@
     <p><b>Amount of beds: </b> <%= room.amount_of_beds %></p>
     <p><b>Price: </b> <%= room.price %></p>
     <p><b>Hotel:</b> <%= room.hotel.name %></p>
+
+    <p><b>Room Promotions:</b></p>
+      <% room.promotions.each do |room_promotion| %>
+        <ul>
+        <p><b>Promotion <%= room_promotion.id %></b></p>
+          <li><p>Start Date: <%= room_promotion.start_date %></p></li>
+          <li><p>End Date: <%= room_promotion.end_date %></p></li>
+          <li><p>Type: <%= room_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= room_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
   </div>
 </div>
 <% end%>
