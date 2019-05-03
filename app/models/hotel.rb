@@ -1,6 +1,5 @@
 class Hotel < ApplicationRecord
-  before_destroy :notify_users
-  has_many :rooms, dependent: :delete_all
+  has_many :rooms, dependent: :destroy
   has_many :promotions, as: :promotionable
   has_many :bookings, through: :rooms
   has_one_attached :cover
