@@ -1,8 +1,28 @@
 module Api
   class RoomsController < ApiController
     def index
-      render json: Room.all
+      
+      rooms = Room.all
+      if params[:min_price].present? && params[:max_price].present?
+        rooms = rooms.where(
+          'price <= ? AND price >= ?',
+          params[:max_price], 
+          params[:min_price]
+        )
+      end
+
+      if params[:min_beds].present? && params[:max_beds].present?
+        rooms = rooms.where(
+          'amount_of_beds <= ? AND amount_of_beds >= ?',
+          params[:max_beds], 
+          params[:min_beds]
+        )
+      end
+
+      render json: rooms
+
     end
+
 
     def show
       render json: Room.find(params[:id])
@@ -35,6 +55,8 @@ module Api
                        status: :unprocessable_entity
       end
     end
+
+
 
     private
     def room_params
