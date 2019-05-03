@@ -30,7 +30,7 @@
             <% if hotel.promotions.any? %>
             <%= link_to 'Available', admin_hotel_promotions_path(hotel) %>
             <% else %>
-            <%= link_to 'Unavailable', admin_room_promotions_path(room) %>
+            <%= link_to 'Unavailable', admin_hotel_promotions_path(hotel) %>
             <% end %>
           </td>
         <td>
