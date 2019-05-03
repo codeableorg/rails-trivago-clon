@@ -46,10 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "faker", "~> 1.9"
   gem "annotate", "~> 2.7"
-<<<<<<< HEAD
   gem "rspec-rails", "~> 3.8"
-=======
->>>>>>> d4708c502099d7b0b3c6bfbfae5322aa0e699bfc
 end
 
 group :development do
@@ -65,9 +62,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
-<<<<<<< HEAD
 gem 'simple_token_authentication'
-=======
->>>>>>> d4708c502099d7b0b3c6bfbfae5322aa0e699bfc
 
 
