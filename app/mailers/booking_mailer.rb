@@ -5,4 +5,12 @@ class BookingMailer < ApplicationMailer
     @booking = params[:booking]
     mail(to: @user.email, subject: 'Hotel deleted from database')
   end
+
+  def booking_confirmation
+    @user = params[:user]
+    @booking = params[:booking]
+    mail(to: @user.email, subject: 'Booking confirmed!')
+  end
+
+  
 end
