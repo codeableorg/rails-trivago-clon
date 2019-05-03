@@ -1,13 +1,12 @@
 class Api::BookingsController < ApiController
+  before_action :authorization_method
+
   before_action :set_booking, only: [:show, :update, :destroy]
   def index
-    authorize Booking
     render json: Booking.all
-    authorize @bookings
   end
 
   def show 
-    authorize @booking
     render json: @booking
   end
 
@@ -19,14 +18,12 @@ class Api::BookingsController < ApiController
       render json: { message: 'Booking not saved' }, 
                       status: :unprocessable_entity
     end
-    # authorize @booking
   end
 
   def destroy
     @booking.destroy
       render json: { message: 'Booking deleted' },
                       status: :ok
-  # authorize @booking
   end
 
   def update
@@ -37,7 +34,6 @@ class Api::BookingsController < ApiController
       render json: { message: 'Booking not updated'} , 
                       status: :unprocessable_entity
     end
-    # authorize @booking
   end
 
   private
@@ -47,6 +43,10 @@ class Api::BookingsController < ApiController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def authorization_method
+    authorize Booking
   end
 
 end
