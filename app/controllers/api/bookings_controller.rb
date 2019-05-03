@@ -1,11 +1,14 @@
 module Api
   class BookingsController < ApiController
+    before_action :set_booking, only: [:show, :update, :destroy]
     def index
+      authorize Booking
       render json: Booking.all
     end
 
-    def show
-      render json: Booking.find(params[:id])
+    def show 
+      authorize @booking
+      render json: @booking
     end
 
     def create
@@ -19,15 +22,13 @@ module Api
     end
 
     def destroy
-      booking = Booking.find(params[:id])
-      booking.destroy
+      @booking.destroy
         render json: { message: 'Booking deleted' },
                        status: :ok
     end
 
     def update
-      booking = Booking.find(params[:id])
-      if booking.update_attributes(booking_params)
+      if @booking.update_attributes(booking_params)
         render json: { message: 'Updated Booking'} , 
                        status: :ok
       else
@@ -40,5 +41,10 @@ module Api
     def booking_params
       params.permit(:start_date,:end_date,:paid_price,:user_id,:room_id)
     end
+
+    def set_booking
+      @booking = Booking.find(params[:id])
+    end
+
   end
 end

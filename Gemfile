@@ -46,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "faker", "~> 1.9"
   gem "annotate", "~> 2.7"
+  gem "rspec-rails", "~> 3.8"
 end
 
 group :development do
@@ -62,4 +63,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'simple_token_authentication'
+
 

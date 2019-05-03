@@ -17,7 +17,6 @@ class Booking < ApplicationRecord
   end
 
   def booking_deleted
-    p "booking_deleted  "
     BookingMailer.with(user: user, booking: self).user_booking_deleted.deliver_later
   end
 end

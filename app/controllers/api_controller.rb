@@ -1,6 +1,11 @@
 class ApiController < ActionController::API
+
+  include Pundit
+  
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
+  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
   before_action :require_login
 
   def require_login
@@ -22,5 +27,9 @@ class ApiController < ActionController::API
     authenticate_with_http_token do |token, _options|
       User.find_by(token: token)
     end
+  end
+
+  def user_not_authorized
+    render_unauthorized("Role not defined")
   end
 end

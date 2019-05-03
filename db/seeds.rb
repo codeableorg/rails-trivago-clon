@@ -44,7 +44,7 @@ hotel5 = Hotel.create(name: Faker::Company.unique.name, email: "ry.yrupailla+hot
 
 # Add rooms
 p "Adding 10 rooms"
-room1 = hotel1.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300), cover: get_image("rooms/room1.jpg"))
+room1 = hotel1.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: 160, cover: get_image("rooms/room1.jpg"))
 room2 = hotel1.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300), cover: get_image("rooms/room2.jpg"))
 room3 = hotel2.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300), cover: get_image("rooms/room3.jpg"))
 room4 = hotel2.rooms.create(name: Faker::Name.name, amount_of_beds: rand(1..4), price: rand(50..300), cover: get_image("rooms/room4.jpg"))
@@ -77,3 +77,6 @@ promotion2 = room3.promotions.create(start_date: Date.parse("February 10 2019"),
 promotion3 = room5.promotions.create(start_date: Date.parse("May 15 2019"), end_date: Date.parse("June 15 2019"), discount_type: "percentage", discount_amount: 9)
 # promotion1.room << room5
 
+promotion4 = room1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "fixed", discount_amount: 60)
+promotion5 = room1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "percentage", discount_amount: 60)
+promotion6 = hotel1.promotions.create(start_date: Date.parse("February 10 2000"), end_date: Date.parse("February 17 2040"), discount_type: "percentage", discount_amount: 60)
