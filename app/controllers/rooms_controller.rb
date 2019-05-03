@@ -34,6 +34,7 @@ class RoomsController < ApplicationController
 
 
   def book 
+    authorize Room
     if params[:min_date].present? && params[:max_date].present?
 
       @room = Room.find(params[:id])

@@ -10,6 +10,11 @@ class RoomPolicy < ApplicationPolicy
   def index?
     return true if user.admin?
   end
+
+  def book?
+    return true if user.admin?
+    @user.&
+  end
  
   def create?
     return true if user.admin?
