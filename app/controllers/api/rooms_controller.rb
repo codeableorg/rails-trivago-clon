@@ -41,14 +41,14 @@ module Api
             max_date: params[:max_date]
           }  
         ).ids
-        # @conflict_ids.none?
-        if true
+
+        if @conflict_ids.none?
           paid_price = @room.price
           total_discount = get_discount(@room)
           paid_price -= total_discount
   
           paid_price = 0 if paid_price < 0
-          current_user = User.first
+          
           current_user.bookings.create( 
             start_date: params[:min_date], 
             end_date: params[:max_date], 
