@@ -4,6 +4,5 @@ class Booking < ApplicationRecord
 
   def notify_users
     BookingMailer.with(user: user, booking: self).notify_users.deliver_later
-  end
-
+  end  
 end
