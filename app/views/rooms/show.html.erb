@@ -1,9 +1,11 @@
 <h1>Room : <%= @room.name %></h1>
 
-<%= form_tag(book_room_path(params[:id]), {:method => 'post'}) do %>
-    <%= date_field_tag(:min_date, Date.today)%>
-    <%= date_field_tag(:max_date, Date.today + 10.days)%>
-    <%= submit_tag('I want to book', :name => nil) %>
+  <% if current_user %>
+    <%= form_tag(book_room_path(params[:id]), {:method => 'post'}) do %>
+      <%= date_field_tag(:min_date, Date.today)%>
+      <%= date_field_tag(:max_date, Date.today + 10.days)%>
+      <%= submit_tag('I want to book', :name => nil) %>
+    <% end %>
 <% end %>
 <p class="error"><%= @error %></p>
 
@@ -48,28 +50,28 @@
   <%= link_to "« back", rooms_path, :class => "btn btn-back" %>
 </div>
 
-<h2>Bookings</h2>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>To</th>
-      <th>Room</th>
-      <th>Paid Price</th>
-      <th>User</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
+<% if current_user %>
+  <h2>Bookings</h2>
+  <table>
+    <thead>
       <tr>
-        <td><%= booking.start_date %></td>
-        <td><%= booking.end_date %></td>
-        <td><%= booking.room_id %></td>
-        <td>US$ <%= booking.paid_price %></td>
-        <td><%= booking.user.name %></td>
+        <th>From</th>
+        <th>To</th>
+        <th>Room</th>
+        <th>Paid Price</th>
+        <th>User</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.start_date %></td>
+          <td><%= booking.end_date %></td>
+          <td><%= booking.room_id %></td>
+          <td>US$ <%= booking.paid_price %></td>
+          <td><%= booking.user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
