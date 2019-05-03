@@ -81,7 +81,6 @@ module Api
     end
 
     describe "Add new hotel" do
-
       it "Add incorrect info for hotel" do
         request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
         post :create, params: {name: "DummyHotel"}
@@ -118,6 +117,5 @@ module Api
         expect(hotel["message"]).to eq("Hotel deleted")
       end
     end
-
   end
 end

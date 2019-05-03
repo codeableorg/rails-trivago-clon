@@ -7,7 +7,7 @@ module Api
       Room.delete_all
       Hotel.delete_all
       User.delete_all
-     # Session.delete_all # required?
+
      p "Seeding for test"
      p "Adding users: 1..3"
      @user1 = User.create(name: "User1Admin", email: "cayala.w+testadmin@gmail.com", password: "123456", role: "admin", token: Devise.friendly_token[0, 30]) # admin

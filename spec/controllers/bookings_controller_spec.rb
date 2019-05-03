@@ -11,6 +11,7 @@ module Api
      # Session.delete_all # required?
       p "Seeding for test"
       p "Adding users: 1..3"
+
       @user1 = User.create(name: "User1Admin", email: "cayala.w+testadmin@gmail.com", password: "123456", role: "admin", token: Devise.friendly_token[0, 30]) # admin
       @user2 = User.create(name: "User2Regular", email: "cayala.w+testuser1@gmail.com", password: "123456", token: Devise.friendly_token[0, 30]) # user      
       @user3 = User.create(name: "User3Regular", email: "cayala.w+testuser2@gmail.com", password: "123456", token: Devise.friendly_token[0, 30])
@@ -35,6 +36,7 @@ module Api
       p "Finish seeding"
 
     end
+
 
     describe "Testing access" do
       it "return unauthorized" do
@@ -85,6 +87,7 @@ module Api
 
     describe "Edit booking" do
       it "Edit booking and check id" do
+
         request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
         patch :update, params: {id: Booking.last.id, start_date: Date.parse("July 1 2019"), end_date: Date.parse("July 2 2019")}
         book = JSON.parse(response.body)

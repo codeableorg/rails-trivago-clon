@@ -1,4 +1,4 @@
-class RoomPolicy < ApplicationPolicy
+class Api::RoomPolicy < ApplicationPolicy
 
   attr_reader :user, :room
 

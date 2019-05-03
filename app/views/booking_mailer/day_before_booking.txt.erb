@@ -1,0 +1,12 @@
+Hello <%= @user.email %>!
+Your reservation is tomorrow!
+
+Details: 
+------------------------------------------------
+From: <%= @booking.start_date %> 
+To: <%= @booking.end_date %> 
+Paid Price: <%= @booking.paid_price %> 
+Room: <%= @booking.room.name %>
+------------------------------------------------
+
+Have a great day, thanks for your preference!
