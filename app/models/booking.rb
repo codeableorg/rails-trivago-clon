@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  before_destroy :notify_users
+  before_destroy :notify_users, :booking_deleted
   after_create :send_confirmation, :notify_booking
   belongs_to :user
   belongs_to :room
@@ -14,5 +14,10 @@ class Booking < ApplicationRecord
 
   def notify_booking
     BookingMailer.with(user: user, booking: self, hotel: self.room.hotel).booking_notification.deliver_later
+  end
+
+  def booking_deleted
+    p "booking_deleted  "
+    BookingMailer.with(user: user, booking: self).user_booking_deleted.deliver_later
   end
 end
