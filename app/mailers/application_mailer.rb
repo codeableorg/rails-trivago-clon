@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'gotosor@trivago.com'
+  default from: 'comercial@trivago.com'
   layout 'mailer'
 end
