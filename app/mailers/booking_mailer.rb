@@ -12,5 +12,10 @@ class BookingMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Booking confirmed!')
   end
 
-  
+  def booking_notification
+    @user = params[:user]
+    @booking = params[:booking]
+    @hotel = params[:hotel]
+    mail(to: @hotel.email, subject: 'A room has been booked')
+  end
 end
