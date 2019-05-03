@@ -46,6 +46,7 @@
           <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
         </ul>
       <% end %>
+      <%= link_to "🗑 delete", admin_hotel_path(hotel), method: :delete, data: { confirm: "Do you really want to delete this hotel?" }, :class => "btn btn-delete" %>
     </div>
   </div>
 <% end%>
