@@ -11,12 +11,6 @@ class HotelsController < ApplicationController
     @hotel = Hotel.find(params[:id])
   end
 
-  def new
-  end
-
-  def edit
-  end
-
   def rooms
     @hotel = Hotel.find(params[:id])
     @rooms = @hotel.rooms
