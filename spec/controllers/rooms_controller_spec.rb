@@ -108,32 +108,5 @@ module Api
         expect(room["message"]).to eq("Room deleted")
       end
     end
-=begin
-    describe "Booking rooms" do
-      it "Booking room" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
-        post :book, params: {room_id: @room1.id, start_date: Date.today + 10, end_date: Date.today + 12, paid_price: @room1.price, user_id: @user2.id}
-        booking  =JSON.parse(response.body)
-        expect(response).to have_ttp_status(:ok)
-        expect(booking["id"]).to eq(Booking.last.id)
-      end
-
-      it "Booking conflicts" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
-        post :book, params: {room_id: @room1.id, start_date: Date.today + 1, end_date: Date.today, paid_price: @room1.price, user_id: @user2.id}
-        booking  =JSON.parse(response.body)
-        expect(response).to have_ttp_status(:ok)
-        expect(booking["message"]).to eq("booking conflicts")
-      end
-
-      it "Reject booking" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
-        post :book, params: {room_id: @room1.id, start_date: Date.today + 10, paid_price: @room1.price, user_id: @user2.id}
-        booking  =JSON.parse(response.body)
-        expect(response).to have_ttp_status(:ok)
-        expect(booking["message"]).to eq("not enough params")
-      end
-    end
-=end
   end
 end
