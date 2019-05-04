@@ -1,0 +1,77 @@
+<h1>Room : <%= @room.name %></h1>
+
+  <% if current_user %>
+    <%= form_tag(book_room_path(params[:id]), {:method => 'post'}) do %>
+      <%= date_field_tag(:min_date, Date.today)%>
+      <%= date_field_tag(:max_date, Date.today + 10.days)%>
+      <%= submit_tag('I want to book', :name => nil) %>
+    <% end %>
+<% end %>
+<p class="error"><%= @error %></p>
+
+<div class="piece">
+  <div>
+    <h2><%= @room.name %></h2>
+    <% if @room.cover.attached? %>
+      <% @room.cover.each do |image| %>  
+        <%= image_tag image.variant(resize: "200x200") %>
+      <% end %>  
+    <% end %>
+  </div>
+  <div class="piece-right">
+    <p><b>Amount of beds: </b> <%= @room.amount_of_beds %></p>
+    <p><b>Price: </b> <%= @room.price %></p>
+    <p><b>Hotel:</b> <%= @room.hotel.name %></p>
+
+    <p><b>Room Promotions:</b></p>
+      <% @room.promotions.each do |room_promotion| %>
+        <ul>
+        <p><b>Promotion <%= room_promotion.id %></b></p>
+          <li><p>Start Date: <%= room_promotion.start_date %></p></li>
+          <li><p>End Date: <%= room_promotion.end_date %></p></li>
+          <li><p>Type: <%= room_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= room_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+
+    <p><b>Hotel Promotions:</b></p>
+      <% @room.hotel.promotions.each do |hotel_promotion| %>
+        <ul>
+        <p><b>Promotion <%= hotel_promotion.id %></b></p>
+          <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>
+          <li><p>End Date: <%= hotel_promotion.end_date %></p></li>
+          <li><p>Type: <%= hotel_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+  </div>
+</div>
+<div class="controls">
+  <%= link_to "« back", rooms_path, :class => "btn btn-back" %>
+</div>
+
+<% if current_user %>
+  <h2>Bookings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Room</th>
+        <th>Paid Price</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.start_date %></td>
+          <td><%= booking.end_date %></td>
+          <td><%= booking.room_id %></td>
+          <td>US$ <%= booking.paid_price %></td>
+          <td><%= booking.user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

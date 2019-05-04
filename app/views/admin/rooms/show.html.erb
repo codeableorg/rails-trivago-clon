@@ -1,10 +1,21 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
-<h2><%= @room.name %></h2>
-<p>Amount of beds: <%= @room.amount_of_beds %></p>
-<p>Price: <%= @room.price %></p>
-<p>Hotel: <%= @room.hotel.name %></p>
+<h2>Details</h2>
+<div class="piece">
+  <% if @room.cover.attached? %>
+    <% @room.cover.each do |image| %>
+      <%= image_tag image.variant(resize: "300x300") %>
+    <% end %>
+  <% end %>
+  <div class="piece-right">
+    <h2><%= @room.name %></h2>
+    <p><b>Amount of beds:</b> <%= @room.amount_of_beds %></p>
+    <p><b>Price:</b> US $ <%= @room.price %></p>
+    <p><b>Hotel:</b> <%= @room.hotel.name %></p>
+    <p><b>Contact</b>: <%= mail_to @room.hotel.email, "Contact" %></p>
+  </div>
+</div>
 
-<%= link_to 'Back', admin_rooms_path %>
-<%= link_to "Edit", edit_admin_room_path(@room) %>
-<%= link_to "Delete", admin_room_path(@room), method: :delete, data: { confirm: "Do you really want to delete this room?" } %>
+<div class="controls">
+  <%= link_to "« back", admin_rooms_path, :class => "btn btn-back" %>
+  <%= link_to "✎ edit", edit_admin_room_path(@room), :class => "btn btn-edit" %>
+  <%= link_to "🗑 delete", admin_room_path(@room), method: :delete, data: { confirm: "Do you really want to delete this room?" }, :class => "btn btn-delete" %>
+</div>

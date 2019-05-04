@@ -1,0 +1,56 @@
+<h2>Welcome Admin👋</h2>
+
+<h2>Most Popular Hotels👍</h2>
+<% @popularhotels.each do |hotel| %>
+  <div class="piece">
+    <% hotel.cover.each do |image| %>
+      <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% end %>
+    <div class="piece-right">
+      <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
+      <p><b>Contact Hotel: </b> <%= mail_to hotel.email, hotel.email %></p>
+      <p><b>Country: </b> <%= hotel.country %></p>
+      <p><b>City: </b> <%= hotel.city %></p>
+      <p><b>Address: </b> <%= hotel.address %></p>
+
+      <p><b>Hotel Promotions:</b></p>
+      <% hotel.promotions.each do |hotel_promotion| %>
+        <ul>
+        <p><b>Promotion <%= hotel_promotion.id %></b></p>
+          <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>
+          <li><p>End Date: <%= hotel_promotion.end_date %></p></li>
+          <li><p>Type: <%= hotel_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+<% end%>
+
+<h2>Less Popular Hotels👎</h2>
+<% @lesspopularhotels.each do |hotel| %>
+  <div class="piece">
+    <% hotel.cover.each do |image| %>
+      <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+    <% end %>
+    <div class="piece-right">
+      <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
+      <p><b>Contact Hotel: </b> <%= mail_to hotel.email, hotel.email %></p>
+      <p><b>Country: </b> <%= hotel.country %></p>
+      <p><b>City: </b> <%= hotel.city %></p>
+      <p><b>Address: </b> <%= hotel.address %></p>
+
+      <p><b>Hotel Promotions:</b></p>
+      <% hotel.promotions.each do |hotel_promotion| %>
+        <ul>
+        <p><b>Promotion <%= hotel_promotion.id %></b></p>
+          <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>
+          <li><p>End Date: <%= hotel_promotion.end_date %></p></li>
+          <li><p>Type: <%= hotel_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+      <%= link_to "🗑 delete", admin_hotel_path(hotel), method: :delete, data: { confirm: "Do you really want to delete this hotel?" }, :class => "btn btn-delete" %>
+    </div>
+  </div>
+<% end%>

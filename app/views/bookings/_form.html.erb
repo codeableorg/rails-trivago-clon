@@ -1,0 +1,36 @@
+<%= form_for @booking do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :paid_price %>
+    <%= f.number_field :paid_price %>
+  </div>
+
+  <p>User</p>
+  <%= f.collection_select(:user_id, User.all, :id, :name) %>
+
+  <p>Room</p>
+  <%= f.collection_select(:room_id, Room.all, :id, :name) %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

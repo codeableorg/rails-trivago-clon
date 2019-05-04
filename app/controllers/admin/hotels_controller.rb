@@ -1,4 +1,5 @@
 class Admin::HotelsController < ApplicationController
+  before_action :authorization_method
   before_action :set_hotels, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -45,6 +46,10 @@ class Admin::HotelsController < ApplicationController
   end
 
   def hotel_params
-    params.require(:hotel).permit(:name, :email, :city, :country, :address)
+    params.require(:hotel).permit(:name, :email, :city, :country, :address, cover: [])
+  end
+
+  def authorization_method
+    authorize [:admin, Hotel]
   end
 end

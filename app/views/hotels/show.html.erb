@@ -1,0 +1,30 @@
+<div class="piece">
+  <div>
+    <h2><%= @hotel.name %></h2>
+    <% if @hotel.cover.attached? %>
+      <% @hotel.cover.each do |image| %>
+        <%= image_tag image.variant(resize: "200x200") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="piece-right">
+    <p><b>Contact:</b> <%= mail_to @hotel.email, @hotel.email %></p>
+    <p><b>City:</b> <%= @hotel.city %></p>
+    <p><b>Country:</b> <%= @hotel.country %></p>
+    <p><b>Address:</b> <%= @hotel.address %></p>
+
+    <p><b>Hotel Promotions:</b></p>
+      <% @hotel.promotions.each do |hotel_promotion| %>
+        <ul>
+        <p><b>Promotion <%= hotel_promotion.id %></b></p>
+          <li><p>Start Date: <%= hotel_promotion.start_date %></p></li>
+          <li><p>End Date: <%= hotel_promotion.end_date %></p></li>
+          <li><p>Type: <%= hotel_promotion.discount_type.capitalize %></p></li>
+          <li><p>Amount: <%= hotel_promotion.discount_amount %></p></li>
+        </ul>
+      <% end %>
+  </div>
+</div>
+<div class="controls">
+  <%= link_to "« back", hotels_path, :class => "btn btn-back" %>
+</div>

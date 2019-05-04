@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
-  def index    
+  def index
+    @bookings = Booking.where(user: current_user)    
   end
 end

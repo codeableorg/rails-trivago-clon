@@ -1,4 +1,5 @@
 class Admin::BookingsController < ApplicationController
+  before_action :authorization_method
   before_action :set_bookings, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +20,7 @@ class Admin::BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save 
-      redirect_to admin_bookings_path(booking), notice: 'Booking already created!'
+      redirect_to admin_bookings_path(@booking), notice: 'Booking already created!'
     else
       render :new
     end
@@ -45,7 +46,11 @@ class Admin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:paid_price, :user_id, :room_id)
+    params.require(:booking).permit(:paid_price, :user_id, :room_id, :start_date, :end_date)
+  end
+
+  def authorization_method
+    authorize [:admin, Booking]
   end
 end
 

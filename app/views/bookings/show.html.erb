@@ -1,0 +1,12 @@
+<h2><%= @booking.id %></h2>
+<p>From: <%= @booking.start_date %></p>
+<p>To: <%= @booking.end_date %></p>
+<p>Paid Price: <%= @booking.paid_price %></p>
+<p>User Name: <%= @booking.user.name %></p>
+<p>User Email: <%= @booking.user.email %></p>
+<p>Room: <%= @booking.room.name %></p>
+<p>Hotel: <%= @booking.room.hotel.name %></p>
+
+<%= link_to 'Back', bookings_path %>
+<%= link_to "Edit", edit_booking_path(@booking) %>
+<%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>

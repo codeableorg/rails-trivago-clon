@@ -1,12 +1,46 @@
-<h1>Hotels#index</h1>
-<p>Find me in app/views/hotels/index.html.erb</p>
 
-<%= link_to "Create a New Hotel", new_admin_hotel_path %>
-
-<% @hotels.each do |hotel| %>
-  <h2><%= link_to hotel.name, admin_hotel_path(hotel) %></h2>
-  <p>Email: <%= hotel.email %></p>
-  <p>City: <%= hotel.city %></p>
-  <p>Country: <%= hotel.country %></p>
-  <p>Address: <%= hotel.address %></p>
-<% end%>
+<div>
+  <div class="controls">
+    <%= link_to "New Hotel", new_admin_hotel_path, class: "btn btn-new" %>
+  </div>
+</div>
+<h2>List Hotels</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Hotel Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Promotions</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hotels.each do |hotel| %>
+      <tr>
+        <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
+        <td><%= mail_to hotel.email, "Contact" %></td>
+        <%#<td><%= hotel.email %><%#</td> %>
+        <td><%= hotel.city %></td>
+        <td><%= hotel.country %></td>
+        <td><%= hotel.address %></td>
+        <td>
+            <% if hotel.promotions.any? %>
+            <%= link_to 'Available', admin_hotel_promotions_path(hotel) %>
+            <% else %>
+            <%= link_to 'Unavailable', admin_hotel_promotions_path(hotel) %>
+            <% end %>
+          </td>
+        <td>
+          <% if hotel.cover.attached? %>
+            <% hotel.cover.each do |image| %>
+              <%= image_tag(image.variant(resize: "200x200"), :alt => hotel.name) %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end%>
+      </tr>  
+  </tbody>
+</table>
