@@ -1,6 +1,3 @@
-<div class="controls">
-  <%= link_to "New Booking", new_booking_path, class: "btn" %>
-</div>
 <% @bookings.each do |booking| %>
 <div class="piece">
   <% booking.room.hotel.cover.each do |image| %>

@@ -35,4 +35,6 @@ Rails.application.routes.draw do
       post 'book'
     end
   end
+
+  resources :bookings
 end
