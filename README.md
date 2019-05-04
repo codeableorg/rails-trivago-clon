@@ -47,15 +47,46 @@ bundle install
   * When you finish, Github will provide you an APP ID and APP SECRET
   * You will need both credentials for get authenticated
   * Copy both credentials in .env file
+- Generate your email credentials
 
-- Run: 
+  * Go to [https://myaccount.google.com/security](https://myaccount.google.com/security) and select `App passwords` option.
+
+  * Note: You should activate two-factor authentication in your Gmail account.
+
+  * In `Select App`, select `Other(Custom name)`. Write a custom name like `Local web app`
+  * Click on `Generate`. Copy the generated password, and click on `Done`
+
+  * Add in `/config/environments/development.rb`
+
+```ruby
+# ActionMailer config
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings =
+  {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: 'your_username',
+    password: 'your_password',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+```
+
+  * Test with devise option: `Reset password`.
+  * Go to [`http://localhost:3000/users/password/new`](http://localhost:3000/users/password/new).
+  * Or write in console `Devise::Mailer.reset_password_instructions(user, token)`
+
+  * If you want to update the mails created by devise, edit the views in `/app/views/devise/mailer/`
+
+- Finally, run: 
 ```
 rails server
 ```
 or 
 ```
 rails s
-```
+``` 
 
 ### 3) Recommendations
 
@@ -64,6 +95,12 @@ rails s
 ```
 brew install imagemagick
 ```
+- If you want to have more admins o users, feel free to modify seeds.rb
+- If you modify seed.rb, execute again the commands from installation (drop,setup) and then run this command:
+```
+bin/rails db:seed
+```
+
 
 ### 4) Contributing
 
