@@ -12,6 +12,7 @@ class User < ApplicationRecord
     user = where(email: auth.info.email.downcase).first_or_create do |user|
       user.email = auth.info.email.downcase
       user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.email.split("@")[0]
     end
     provider = Provider.find_or_create_by(name: auth.provider, uid: auth.uid, user_id: user.id)
     user
