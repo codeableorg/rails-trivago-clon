@@ -1,4 +1,4 @@
-class Admin::PromotionPolicy < ApplicationPolicy
+class PromotionPolicy < ApplicationPolicy
 
   attr_reader :user, :booking
 

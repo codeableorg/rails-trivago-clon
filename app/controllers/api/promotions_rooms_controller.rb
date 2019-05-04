@@ -47,7 +47,7 @@ class Api::PromotionsRoomsController < ApiController
   end
 
   def authorization_method
-    authorize [:admin, :promotion]
+    authorize :promotion
   end
   
 end
