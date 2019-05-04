@@ -33,7 +33,9 @@
         </div>
         <td>
           <% if room.cover.attached? %>
-            <%= image_tag room.cover.variant(resize: "200x200") %>
+            <% room.cover.each do |image| %>
+              <%= image_tag image.variant(resize: "200x200") %>
+            <% end %>
           <% end %>
         </td>
       <% end%>

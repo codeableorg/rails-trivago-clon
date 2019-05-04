@@ -2,12 +2,10 @@ class ApiController < ActionController::API
   
   include Pundit
   attr_reader :current_user
-  before_action :authenticate_request
+  # before_action :authenticate_request
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   include ActionController::HttpAuthentication::Token::ControllerMethods
-
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
   before_action :require_login
 
@@ -31,10 +29,10 @@ class ApiController < ActionController::API
     end
   end
 
-  def authenticate_request
-    @current_user = user
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-  end
+  # def authenticate_request
+  #   @current_user = user
+  #   render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+  # end
 
   def user_not_authorized
     render json: { error: 'You need permission' }, status: 403

@@ -1,5 +1,5 @@
 class Admin::PromotionsRoomsController < ApplicationController
-
+  before_action :authorization_method
   def index
     @room = Room.find(params[:room_id])
     @promotions = @room.promotions
@@ -51,5 +51,9 @@ class Admin::PromotionsRoomsController < ApplicationController
 
   def promotion_params
     params.require(:promotion).permit(:start_date, :end_date, :discount_type, :discount_amount)
+  end
+
+  def authorization_method
+    authorize [:admin, :promotion]
   end
 end

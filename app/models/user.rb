@@ -1,24 +1,5 @@
 class User < ApplicationRecord
-  
-  # has_secure_password
-  # Not needed, devise give us this :eye
 
-            # has_secure_token
-
-            # def invalidate_token
-            #   update(token: nil)
-            # end
-
-            # def self.valid_login?(email, password)
-            #   user = find_by(email: email)
-            #   user if user && user.authenticate(password)
-            # end
-            # self.valid_long Check Slack from Kattya - 1st Find by email
-            # 2nd User.validpassword 
-  
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   before_create :generate_token
   after_create :send_welcome_email, :send_registration_mail
   devise :database_authenticatable, :registerable,
