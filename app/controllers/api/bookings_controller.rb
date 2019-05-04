@@ -1,9 +1,15 @@
 class Api::BookingsController < ApiController
-  before_action :authorization_method
-
+  before_action :authorization_method, except: :create
   before_action :set_booking, only: [:show, :update, :destroy]
   def index
+    # authorize Booking
     render json: Booking.all
+    # authorize @bookings
+  end
+
+  def show 
+    # authorize @booking
+    render json: @booking
   end
 
   def show 
@@ -12,6 +18,7 @@ class Api::BookingsController < ApiController
 
   def create
     booking = Booking.new(booking_params)
+    authorize booking
     if booking.save
       render json: booking
     else
@@ -48,6 +55,4 @@ class Api::BookingsController < ApiController
   def authorization_method
     authorize Booking
   end
-
 end
-
