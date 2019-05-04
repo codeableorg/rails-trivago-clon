@@ -11,23 +11,9 @@ class RoomPolicy < ApplicationPolicy
   end
 
   def book?
-    @user&.regular?
-  end
- 
-  def create?
-    @user&.admin?
-  end
-
-  def edit?
-    @user&.admin?
-  end
- 
-  def update?
-    @user&.admin?
-  end
- 
-  def destroy?
-    @user&.admin?
+    if @user&.regular?
+      @record.user_id == @user.id
+    end 
   end
  
 end
