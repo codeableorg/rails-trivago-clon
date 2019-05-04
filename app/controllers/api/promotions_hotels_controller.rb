@@ -1,4 +1,5 @@
 class Api::PromotionsHotelsController < ApiController
+  before_action :authorization_method
   before_action :set_promotion, only: [:show, :update, :destroy]
   
   def index
@@ -43,5 +44,9 @@ class Api::PromotionsHotelsController < ApiController
   
   def promotion_params
     params.permit(:start_date, :end_date, :discount_type, :discount_amount)
+  end
+
+  def authorization_method
+    authorize [:admin, :promotion]
   end
 end
