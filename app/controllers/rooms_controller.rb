@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authorization_method
+  before_action :authorization_method, except: [:book]
 
   def index
 
@@ -61,12 +61,14 @@ class RoomsController < ApplicationController
 
         paid_price = 0 if paid_price < 0
         
-        current_user.bookings.create( 
+        new_booking = current_user.bookings.new( 
           start_date: params[:min_date], 
           end_date: params[:max_date], 
           paid_price: paid_price, 
           room_id: @room.id 
-        )            
+        )    
+        authorize new_booking, policy_class: RoomPolicy
+        new_booking.save
       end
       redirect_to action: 'show'
     end  
