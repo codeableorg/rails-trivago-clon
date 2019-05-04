@@ -77,8 +77,8 @@ module Api
 
     describe "Add new booking" do
       it "Add booking and is last" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
-        post :create, params: {start_date: Date.today + 2, end_date: Date.today + 5, paid_price: @room3.price, user_id: @user3.id, room_id: @room3.id }
+        request.headers['Authorization'] = "Token token=#{@user3.token}" # adding access permission
+        post :create, params: {start_date: Date.today + 10, end_date: Date.today + 12, paid_price: @room3.price, user_id: @user3.id, room_id: @room3.id }
         book = JSON.parse(response.body)
         expect(response).to have_http_status(:ok) # check response
         expect(book["id"]).to eq(Booking.last.id) # check if last creation is last.
@@ -86,10 +86,9 @@ module Api
     end
 
     describe "Edit booking" do
-      it "Edit booking and check id" do
-
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
-        patch :update, params: {id: Booking.last.id, start_date: Date.parse("July 1 2019"), end_date: Date.parse("July 2 2019")}
+      it "Edit booking" do
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
+        patch :update, params: {id: Booking.last.id, start_date: Date.today + 25, end_date: Date.today + 30}
         book = JSON.parse(response.body)
         expect(response).to have_http_status(:ok)
         expect(book["message"]).to eq("Updated Booking")
@@ -98,7 +97,7 @@ module Api
 
     describe "Delete booking" do
       it "Delete booking and check existence" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
         last_book = Booking.last
         delete :destroy, params: {id: last_book.id}
         book = JSON.parse(response.body)

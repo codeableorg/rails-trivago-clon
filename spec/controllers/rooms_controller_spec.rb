@@ -73,7 +73,7 @@ module Api
 
     describe "Add new room" do
       it "Add room, return error" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
         post :create, params: {name: "DummyRoom1", amount_of_beds: 5, price: 300}
         room = JSON.parse(response.body)
         expect(response).to have_http_status(:unprocessable_entity) # check response
@@ -81,7 +81,7 @@ module Api
       end
 
       it "Add room, return ok" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
         post :create, params: {name: "DummyRoom1", amount_of_beds: 5, price: 300, hotel_id: @hotel1}
         room = JSON.parse(response.body)
         expect(response).to have_http_status(:ok) # check response
@@ -91,7 +91,7 @@ module Api
 
     describe "Edit room" do
       it "Edit room and check id" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
         patch :update, params: {id: Room.last.id, name: "DummyRoom2"}
         room = JSON.parse(response.body)
         expect(response).to have_http_status(:ok)
@@ -101,7 +101,7 @@ module Api
 
     describe "Delete room" do
       it "Delete room and check existance" do
-        request.headers['Authorization'] = "Token token=#{@user2.token}" # adding access permission
+        request.headers['Authorization'] = "Token token=#{@user1.token}" # adding access permission
         delete :destroy, params: {id: Room.last.id}
         room = JSON.parse(response.body)
         expect(response).to have_http_status(:ok)
