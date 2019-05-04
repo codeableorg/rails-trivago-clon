@@ -1,7 +1,9 @@
 <h2>Details:</h2> <%# <%= @booking.id %>
 <div class="piece">
   <% if @booking.room.hotel.cover.attached? %>
-    <%= image_tag @booking.room.hotel.cover.variant(resize: "200x200") %>
+    <% @booking.room.hotel.cover.each do |image| %>
+      <%= image_tag image.variant(resize: "200x200") %>
+    <% end %>
   <% end %>
   <div class="piece-right">
     <p><b>Hotel:</b> <%= @booking.room.hotel.name %></p>

@@ -6,8 +6,14 @@ class BookingPolicy < ApplicationPolicy
     @user&.regular?
   end
 
-  def create?
+  def new?
     @user&.regular?
+  end
+
+  def create?
+    if @user&.regular?
+      @record.user_id == @user.id
+    end    
   end
 
   def edit?

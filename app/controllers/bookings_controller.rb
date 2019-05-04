@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  before_action :authorization_method
+  before_action :authorization_method, except: [:create]
 
   def index 
     if params[:search].present?
@@ -11,26 +11,27 @@ class BookingsController < ApplicationController
   end
 
   def show
-    authorize @booking
+
   end
 
   def new
     @booking = Booking.new
-    authorize @booking
   end
 
-  def create
+  def create    
     @booking = Booking.new(booking_params)
+    authorize @booking
+
     if @booking.save(booking_params)
       redirect_to booking_path(@booking), notice: "The booking was successfully created"
     else
       render :new
     end
-    authorize @booking
+
   end
 
   def edit
-    authorize @booking
+
   end
 
   def update
@@ -39,13 +40,13 @@ class BookingsController < ApplicationController
     else
       render :edit
     end
-    authorize @booking
+
   end
 
   def destroy
     @booking.destroy
     redirect_to bookings_path, notice: "The booking was successfully deleted"
-    authorize @booking
+
   end
 
   private 
