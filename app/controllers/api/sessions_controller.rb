@@ -4,8 +4,10 @@ class Api::SessionsController < ApiController
   def create
     user = User.find_by_email(params[:email])
     if user && user.valid_password?(params[:password])
-      
-      render json: { token: user.token }
+      user.generate_token
+      token = user.token
+      cookies.signed[:auth_token] = { value: token, httponly: true }
+      render json: { token: token }
     else
       render_unauthorized('Incorrect email or password')
     end

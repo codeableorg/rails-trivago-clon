@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    post "/login", to: 'sessions#create' 
+    post "/login", to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+    get '/me', to: 'users#me'
     resources :hotels do
       resources :promotions, controller: 'promotions_hotels'
     end

@@ -1,5 +1,5 @@
 class ApiController < ActionController::API
-  
+  include ActionController::Cookies
   include Pundit
   attr_reader :current_user
   # before_action :authenticate_request
@@ -23,10 +23,16 @@ class ApiController < ActionController::API
     render json: errors, status: :unauthorized
   end
 
+  # def authenticate_token
+  #   authenticate_with_http_token do |token, _options|
+  #     User.find_by(token: token)
+  #   end
+  # end
+
   def authenticate_token
-    authenticate_with_http_token do |token, _options|
-      User.find_by(token: token)
-    end
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    puts cookies.signed[:auth_token]
+    User.find_by(token: cookies.signed[:auth_token])
   end
 
   # def authenticate_request
